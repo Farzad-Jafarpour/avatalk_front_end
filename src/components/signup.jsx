@@ -34,7 +34,7 @@ class SignUp extends Form {
           {this.renderInput("name", "Name")}
           {this.renderInput("lastName", "Last Name")}
           {this.renderInput("nationalCode", "National code")}
-          {this.renderInput("password", "Password")}
+          {this.renderInput("password", "Password", "password")}
           {this.renderCheckOut()}
           {this.renderButton("Sign Up")}
         </form>

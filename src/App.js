@@ -1,20 +1,22 @@
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import SignUp from "./components/signup";
 import NavBar from "./components/navbar";
-import "./App.css";
 import Login from "./components/login";
+import "./App.css";
 
 function App() {
   return (
-    <div>
+    <React.Fragment>
       <NavBar />
-
-      <Routes className="content">
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<div>Hi</div>} />
-      </Routes>
-    </div>
+      <main className="container">
+        <Routes className="content">
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<div>Home Page</div>} />
+        </Routes>
+      </main>
+    </React.Fragment>
   );
 }
 
