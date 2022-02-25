@@ -13,27 +13,58 @@ class SignUp extends Component {
     errors: {},
   };
   schema = {
-    name: Joi.string().min(5).max(25).required(),
-    lastName: Joi.string().min(5).max(25).required(),
-    nationalCode: Joi.string().min(10).max(10).required(),
-    password: Joi.string().min(5).max(255).required(),
+    name: Joi.string().min(5).max(25).required().label("Name"),
+    lastName: Joi.string().min(5).max(25).required().label("Lastname"),
+    nationalCode: Joi.string()
+      .min(10)
+      .max(10)
+      .required()
+      .label("National code"),
+    password: Joi.string().min(5).max(255).required().label("Password"),
   };
+
   validate = () => {
-    const result = Joi.validate(this.state.user, this.schema);
-    console.log(result);
+    const options = { abortEarly: false };
+    const { error } = Joi.validate(this.state.user, this.schema, options);
+    if (!error) return null;
+
+    const errors = {};
+    for (let item of error.details) errors[item.path[0]] = item.message;
+    return errors;
+
+    // const obj = { [name]: value };
+    // const schema = { [name]: this.schema[name] };
+    // const { error } = Joi.validate(obj, schema);
+    // return error ? error.details[0].message : null;
   };
+
+  validateProperty = ({ name, value }) => {
+    const obj = { [name]: value };
+    const schema = { [name]: this.schema[name] };
+    const { error } = Joi.validate(obj, schema);
+    return error ? error.details[0].message : null;
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submit");
+
+    const errors = this.validate();
+    this.setState({ errors: errors || {} });
+    if (errors) return;
   };
 
   handleChange = ({ currentTarget: input }) => {
+    const errors = { ...this.state.errors };
+    const errorMessage = this.validateProperty(input);
+    if (errorMessage) errors[input.name] = errorMessage;
+    else delete errors[input.name];
+
     const user = { ...this.state.user };
     user[input.name] = input.value;
-    this.setState({ user });
+    this.setState({ user, errors });
   };
   render() {
-    const { user } = this.state;
+    const { user, errors } = this.state;
     return (
       <React.Fragment>
         <form onSubmit={this.handleSubmit}>
@@ -42,24 +73,28 @@ class SignUp extends Component {
             value={user.name}
             label="Name"
             onChange={this.handleChange}
+            error={errors.name}
           />
           <Input
             name="lastName"
             value={user.lastName}
             label="Last Name"
             onChange={this.handleChange}
+            error={errors.lastName}
           />
           <Input
             name="nationalCode"
             value={user.nationalCode}
             label="National Code"
             onChange={this.handleChange}
+            error={errors.nationalCode}
           />
           <Input
             name="password"
             value={user.password}
             label="Password"
             onChange={this.handleChange}
+            error={errors.password}
           />
 
           <div className="mb-3 form-check">
@@ -72,7 +107,11 @@ class SignUp extends Component {
               Check me out
             </label>
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button
+            disabled={this.validate()}
+            type="submit"
+            className="btn btn-primary"
+          >
             Submit
           </button>
         </form>
