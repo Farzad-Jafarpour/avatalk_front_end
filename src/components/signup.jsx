@@ -31,11 +31,6 @@ class SignUp extends Component {
     const errors = {};
     for (let item of error.details) errors[item.path[0]] = item.message;
     return errors;
-
-    // const obj = { [name]: value };
-    // const schema = { [name]: this.schema[name] };
-    // const { error } = Joi.validate(obj, schema);
-    // return error ? error.details[0].message : null;
   };
 
   validateProperty = ({ name, value }) => {
