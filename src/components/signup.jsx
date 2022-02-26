@@ -1,9 +1,7 @@
 import React from "react";
 import Joi from "joi-browser";
 import Form from "./../common/form";
-import axios from "axios";
-
-const apiEndpoint = "http://localhost:3900/api/users";
+import * as userService from "../services/userService";
 
 class SignUp extends Form {
   state = {
@@ -30,9 +28,7 @@ class SignUp extends Form {
   componentDidMount() {}
 
   doSubmit = async () => {
-    const { data } = this.state;
-    const { data: user } = await axios.put(apiEndpoint, data);
-    console.log(user);
+    await userService.register(this.state.data);
   };
 
   render() {
