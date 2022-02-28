@@ -1,6 +1,7 @@
 import React from "react";
 import Joi from "joi-browser";
 import Form from "../common/form";
+import { login } from "./../services/authService";
 
 class Login extends Form {
   state = {
@@ -19,7 +20,20 @@ class Login extends Form {
     password: Joi.string().min(5).max(255).required().label("Password"),
   };
 
-  doSubmit = () => {};
+  doSubmit = async () => {
+    try {
+      const { data } = this.state;
+      const { data: jwt } = await login(data.nationalCode, data.password);
+      localStorage.setItem("token", jwt);
+      this.props.history.push("/");
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        const errors = { ...this.state.errors };
+        errors.nationalCode = ex.response.data;
+        this.setState({ errors });
+      }
+    }
+  };
 
   render() {
     return (

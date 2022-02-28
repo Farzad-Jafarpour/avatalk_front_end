@@ -33,7 +33,7 @@ class SignUp extends Form {
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
-        errors.nationalCode = ex.response.data;
+        errors.nationa = ex.response.data;
         this.setState({ errors });
       }
     }
