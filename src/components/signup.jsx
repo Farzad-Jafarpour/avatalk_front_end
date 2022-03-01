@@ -31,12 +31,12 @@ class SignUp extends Form {
   doSubmit = async () => {
     try {
       const response = await userService.register(this.state.data);
-      auth.loginWithJwt(response.headers["-auth-token"]);
+      auth.loginWithJwt(response.headers["x-auth-token"]);
       window.location = "/";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
-        errors.nationa = ex.response.data;
+        errors.nationalCode = ex.response.data;
         this.setState({ errors });
       }
     }
