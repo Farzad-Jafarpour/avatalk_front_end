@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import Classroom from "./classroom";
+import ListGroup from "./listGroup";
 
 class Home extends Component {
   state = {};
   render() {
-    return <Classroom />;
+    return <ListGroup />;
   }
 }
 

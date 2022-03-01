@@ -7,6 +7,7 @@ import NavBar from "./components/navbar";
 import Login from "./components/login";
 import Logout from "./components/logout";
 import Home from "./components/home";
+import Classroom from "./components/classroom";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
@@ -25,6 +26,7 @@ class App extends Component {
         <main className="container">
           <Routes className="content">
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/classroom" element={<Classroom />} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/" element={<Home />} />

@@ -8,8 +8,19 @@ const NavBar = ({ user }) => {
         <Link className="navbar-brand" to="/">
           Home
         </Link>
-        {!user && (
-          <div className="collapse navbar-collapse" id="navbarNav">
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <NavLink
+                className="nav-link "
+                aria-current="page"
+                to="/classroom"
+              >
+                Create Classroom
+              </NavLink>
+            </li>
+          </ul>
+          {!user && (
             <ul className="navbar-nav">
               <li className="nav-item">
                 <NavLink className="nav-link " aria-current="page" to="/signup">
@@ -22,10 +33,8 @@ const NavBar = ({ user }) => {
                 </NavLink>
               </li>
             </ul>
-          </div>
-        )}
-        {user && (
-          <div className="collapse navbar-collapse" id="navbarNav">
+          )}
+          {user && (
             <ul className="navbar-nav">
               <li className="nav-item">
                 <NavLink className="nav-link " aria-current="page" to="/me">
@@ -38,8 +47,8 @@ const NavBar = ({ user }) => {
                 </NavLink>
               </li>
             </ul>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </nav>
   );
