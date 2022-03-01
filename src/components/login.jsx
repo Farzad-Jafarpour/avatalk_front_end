@@ -25,7 +25,7 @@ class Login extends Form {
       const { data } = this.state;
       const { data: jwt } = await login(data.nationalCode, data.password);
       localStorage.setItem("token", jwt);
-      this.props.history.push("/");
+      window.location = "/";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
@@ -42,7 +42,7 @@ class Login extends Form {
           {this.renderInput("nationalCode", "National code")}
           {this.renderInput("password", "Password", "password")}
           {this.renderCheckOut()}
-          {this.renderButton("Sign Up")}
+          {this.renderButton("Log in")}
         </form>
       </React.Fragment>
     );
