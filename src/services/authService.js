@@ -6,6 +6,8 @@ const { apiUrl } = endpoint;
 
 const apiEndpoint = apiUrl + "/auth";
 
+http.setJwt(getJwt());
+
 export async function login(nationalCode, password) {
   const { data: jwt } = await http.post(apiEndpoint, {
     nationalCode,
@@ -28,6 +30,10 @@ export function getCurrentUser() {
 }
 export function loginWithJwt(jwt) {
   localStorage.setItem("token", jwt);
+}
+
+export function getJwt() {
+  return localStorage.getItem("token");
 }
 
 export default {
