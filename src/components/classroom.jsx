@@ -14,8 +14,16 @@ class Classroom extends Form {
   };
 
   doSubmit = async () => {
-    await classService.createClass(this.state.data);
-    console.log("sent");
+    const { data } = this.state;
+
+    data.sessions = [];
+
+    for (let i = 0; i < data.numberOfSessions; i++) {
+      const { data: sessions } = await classService.generateSessions();
+      data.sessions = [sessions, ...data.sessions];
+    }
+
+    await classService.createClass(data);
   };
 
   render() {

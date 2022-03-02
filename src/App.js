@@ -10,6 +10,7 @@ import Home from "./components/home";
 import Classroom from "./components/classroom";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import Classes from "./components/classes";
 
 class App extends Component {
   state = {};
@@ -27,6 +28,7 @@ class App extends Component {
           <Routes className="content">
             <Route path="/signup" element={<SignUp />} />
             <Route path="/classroom" element={<Classroom />} />
+            <Route path="/classes" element={<Classes />} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/" element={<Home />} />
