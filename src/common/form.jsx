@@ -2,80 +2,77 @@ import React, { useState, useEffect } from "react";
 import Joi from "joi-browser";
 import Input from "./input";
 
+const validate = () => {
+  const options = { abortEarly: false };
+  const { error } = Joi.validate(formData, schema, options);
+  if (!error) return null;
+
+  for (let item of error.details) errors[item.path[0]] = item.message;
+  return errors;
+};
+const validateProperty = ({ name, value }) => {
+  const obj = { [name]: value };
+  const schema = { [name]: schema[name] };
+  const { error } = Joi.validate(obj, schema);
+  return error ? error.details[0].message : null;
+};
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  const errors = validate();
+  this.setState({ errors: errors || {} });
+  if (errors) return;
+
+  doSubmit();
+};
+const handleChange = ({ currentTarget: input }) => {
+  const errors = { ...errors };
+  const errorMessage = validateProperty(input);
+  if (errorMessage) errors[input.name] = errorMessage;
+  else delete errors[input.name];
+
+  const data = { ...formData };
+  data[input.name] = input.value;
+  this.setState({ data, errors });
+};
+
+const renderButton = (label) => {
+  return (
+    <button disabled={validate()} type="submit" className="btn btn-primary">
+      {label}
+    </button>
+  );
+};
+
+const renderInput = (name, label, type) => {
+  // const { data, errors } = this.state;
+  return (
+    <Input
+      type={type}
+      name={name}
+      value={data[name]}
+      label={label}
+      onChange={handleChange}
+      error={errors[name]}
+    />
+  );
+};
+const renderCheckOut = () => {
+  return (
+    <div className="mb-3 form-check">
+      <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+      <label className="form-check-label" htmlFor="exampleCheck1">
+        Check me out
+      </label>
+    </div>
+  );
+};
+
 function Form(props) {
   const [formData, setFormData] = useState({});
   const [errors, setFormErrors] = useState({});
-
-  validate = () => {
-    const options = { abortEarly: false };
-    const { error } = Joi.validate(formData, schema, options);
-    if (!error) return null;
-
-    for (let item of error.details) errors[item.path[0]] = item.message;
-    return errors;
-  };
-  validateProperty = ({ name, value }) => {
-    const obj = { [name]: value };
-    const schema = { [name]: schema[name] };
-    const { error } = Joi.validate(obj, schema);
-    return error ? error.details[0].message : null;
-  };
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-
-    const errors = validate();
-    this.setState({ errors: errors || {} });
-    if (errors) return;
-
-    doSubmit();
-  };
-  handleChange = ({ currentTarget: input }) => {
-    const errors = { ...errors };
-    const errorMessage = validateProperty(input);
-    if (errorMessage) errors[input.name] = errorMessage;
-    else delete errors[input.name];
-
-    const data = { ...formData };
-    data[input.name] = input.value;
-    this.setState({ data, errors });
-  };
-
-  renderButton = (label) => {
-    return (
-      <button disabled={validate()} type="submit" className="btn btn-primary">
-        {label}
-      </button>
-    );
-  };
-
-  renderInput = (name, label, type) => {
-    // const { data, errors } = this.state;
-    return (
-      <Input
-        type={type}
-        name={name}
-        value={data[name]}
-        label={label}
-        onChange={handleChange}
-        error={errors[name]}
-      />
-    );
-  };
-  renderCheckOut = () => {
-    return (
-      <div className="mb-3 form-check">
-        <input
-          type="checkbox"
-          className="form-check-input"
-          id="exampleCheck1"
-        />
-        <label className="form-check-label" htmlFor="exampleCheck1">
-          Check me out
-        </label>
-      </div>
-    );
-  };
+  return <></>;
 }
 
 export default Form;
