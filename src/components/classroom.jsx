@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import Joi from "joi-browser";
 import Form from "./../common/form";
 import classService from "../services/classService";
@@ -13,7 +13,7 @@ class Classroom extends Form {
     name: Joi.string(),
   };
 
-  doSubmit = async () => {
+  doSubmit = useCallback(async () => {
     const { data } = this.state;
 
     data.sessions = [];
@@ -24,7 +24,7 @@ class Classroom extends Form {
     }
 
     await classService.createClass(data);
-  };
+  });
 
   render() {
     return (

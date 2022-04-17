@@ -12,19 +12,25 @@ class Classes extends Component {
         sessions: [{ _id: "", users: [] }],
       },
     ],
+    sessions: [],
   };
 
   async componentDidMount() {
     const { data } = await classService.getClasses();
+    console.log(data);
+    // const sessions = data.classes[0].sessions;
+    // console.log(sessions);
     this.setState({ classes: data });
   }
 
   render() {
     // const { sessions } = this.state.classes[0];
     // console.log(this.state.classes[0].sessions[0]._id);
+
     return (
       <React.Fragment>
-        <div>{sessions[0]._id}</div>
+        <div>{this.state.classes[0].sessions[0]._id}</div>
+
         {/* <div>{sessions[1]._id}</div>; */}
       </React.Fragment>
     );
