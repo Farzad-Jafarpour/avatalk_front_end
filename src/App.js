@@ -8,9 +8,9 @@ import Login from "./components/login";
 import Logout from "./components/logout";
 import Home from "./components/home";
 import Classroom from "./components/classroom";
+import ClassesNew from "./components/classesNew";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
-import ClassesNew from "./components/classesNew";
 
 class App extends Component {
   state = {};
