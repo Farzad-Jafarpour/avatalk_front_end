@@ -8,9 +8,13 @@ import Login from "./components/login";
 import Logout from "./components/logout";
 import Home from "./components/home";
 import Classroom from "./components/classroom";
-import "react-toastify/dist/ReactToastify.css";
-import "./App.css";
 import ClassesNew from "./components/classesNew";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import "react-toastify/dist/ReactToastify.css";
+import CssBaseline from "@mui/material/CssBaseline";
+import "./App.css";
+
+const theme = createTheme();
 
 class App extends Component {
   state = {};
@@ -21,20 +25,24 @@ class App extends Component {
 
   render() {
     return (
-      <React.Fragment>
-        <ToastContainer />
-        <NavBar user={this.state.user} />
-        <main className="container">
-          <Routes className="content">
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/classroom" element={<Classroom />} />
-            <Route path="/classes" element={<ClassesNew />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/logout" element={<Logout />} />
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </main>
-      </React.Fragment>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+
+        <React.Fragment>
+          <ToastContainer />
+          <NavBar user={this.state.user} />
+          <main className="container">
+            <Routes className="content">
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/classroom" element={<Classroom />} />
+              <Route path="/classes" element={<ClassesNew />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/logout" element={<Logout />} />
+              <Route path="/" element={<Home />} />
+            </Routes>
+          </main>
+        </React.Fragment>
+      </ThemeProvider>
     );
   }
 }
