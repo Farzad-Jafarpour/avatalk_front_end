@@ -1,11 +1,8 @@
-import React, { Component } from "react";
-import ListGroup from "./listGroup";
+import React from "react";
+import Dashboard from "./dashboard";
 
-class Home extends Component {
-  state = {};
-  render() {
-    return <ListGroup />;
-  }
-}
+const Home = ({ user }) => {
+  return Dashboard(user);
+};
 
 export default Home;

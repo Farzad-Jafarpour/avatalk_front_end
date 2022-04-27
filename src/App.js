@@ -3,12 +3,13 @@ import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import auth from "./services/authService";
 import SignUp from "./components/signup";
-import NavBar from "./components/navbar";
 import Login from "./components/login";
 import Logout from "./components/logout";
 import Home from "./components/home";
 import Classroom from "./components/classroom";
 import ClassesNew from "./components/classesNew";
+import MiniDrawer from "./components/drawer";
+
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "react-toastify/dist/ReactToastify.css";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -30,7 +31,7 @@ class App extends Component {
 
         <React.Fragment>
           <ToastContainer />
-          <NavBar user={this.state.user} />
+          <MiniDrawer user={this.state.user} />
           <main className="container">
             <Routes className="content">
               <Route path="/signup" element={<SignUp />} />

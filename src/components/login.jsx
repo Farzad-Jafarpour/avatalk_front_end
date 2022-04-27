@@ -63,7 +63,7 @@ export default function Login() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign up
+              Log in
             </Typography>
             <Box component="div" sx={{ mt: 3 }}>
               <Grid container spacing={2}>
@@ -93,12 +93,12 @@ export default function Login() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign Up
+                Log in
               </Button>
               <Grid container justifyContent="center">
                 <Grid item>
                   <Link href="/signup" variant="body2">
-                    Don't have an account? Log in
+                    Don't have an account? Sign Up
                   </Link>
                 </Grid>
               </Grid>
