@@ -37,7 +37,7 @@ const SecondaryListItems = ({ user }) => {
             <ListItemIcon>
               <PersonIcon />
             </ListItemIcon>
-            <ListItemText primary={user.nationalCode} />
+            <ListItemText primary={`${user.name} ${user.lastName}`} />
           </ListItemButton>
           <Link href="/logout">
             <ListItemButton>

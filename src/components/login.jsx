@@ -22,6 +22,7 @@ export default function Login() {
     try {
       await auth.login(data.nationalCode, data.password);
       window.location = "/";
+      console.log(data);
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...data.errors };

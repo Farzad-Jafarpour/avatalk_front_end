@@ -1,4 +1,5 @@
 import * as React from "react";
+import MiniDrawer from "./drawer";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
@@ -18,6 +19,8 @@ function DashboardContent() {
   return (
     <>
       <Box sx={{ display: "flex" }}>
+        <MiniDrawer />
+
         <Box
           component="main"
           sx={{

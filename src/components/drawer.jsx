@@ -1,11 +1,11 @@
 import * as React from "react";
+import auth from "../services/authService";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
@@ -82,9 +82,16 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function MiniDrawer({ user }) {
+export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [user, setUser] = React.useState();
+
+  React.useEffect(() => {
+    const currentUser = auth.getCurrentUser();
+    if (currentUser) setUser(currentUser);
+    return;
+  }, []);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -96,7 +103,6 @@ export default function MiniDrawer({ user }) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
           <IconButton
