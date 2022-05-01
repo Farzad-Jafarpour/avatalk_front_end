@@ -16,7 +16,12 @@ export function getUsers() {
   return http.get(apiEndpoint);
 }
 
+export function deleteUser(nationalCode) {
+  return http.delete(apiEndpoint + "/" + nationalCode);
+}
+
 export default {
   register,
   getUsers,
+  deleteUser,
 };

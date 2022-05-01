@@ -2,7 +2,7 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 
 export default function Copyright(props) {
-  const { companyName } = props;
+  const { companyname } = props;
   return (
     <Typography
       variant="body2"
@@ -12,7 +12,7 @@ export default function Copyright(props) {
     >
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        {companyName}
+        {companyname}
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}

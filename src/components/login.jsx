@@ -105,7 +105,7 @@ export default function Login() {
               </Grid>
             </Box>
           </Box>
-          <Copyright sx={{ mt: 5 }} companyName="Avatalk" />
+          <Copyright sx={{ mt: 5 }} companyname="Avatalk" />
         </Container>
       </form>
     </Grid>

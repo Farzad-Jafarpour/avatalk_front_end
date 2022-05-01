@@ -1,4 +1,5 @@
 import * as React from "react";
+import TextField from "@mui/material/TextField";
 import PropTypes from "prop-types";
 import { alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -21,17 +22,9 @@ import Switch from "@mui/material/Switch";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { visuallyHidden } from "@mui/utils";
-
-function createData(name, calories, fat, carbs, protein) {
-  return {
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
-  };
-}
-// const rows = [createData("Cupcake", 305, 3.7, 67, 5.3)];
+import userService from "../services/userService";
+import RenderInput from "../common/input";
+import { useForm } from "react-hook-form";
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -63,39 +56,6 @@ function stableSort(array, comparator) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-// const headCells = [
-//   {
-//     id: "name",
-//     numeric: false,
-//     disablePadding: true,
-//     label: "Dessert (100g serving)",
-//   },
-//   {
-//     id: "calories",
-//     numeric: true,
-//     disablePadding: false,
-//     label: "Calories",
-//   },
-//   {
-//     id: "fat",
-//     numeric: true,
-//     disablePadding: false,
-//     label: "Fat (g)",
-//   },
-//   {
-//     id: "carbs",
-//     numeric: true,
-//     disablePadding: false,
-//     label: "Carbs (g)",
-//   },
-//   {
-//     id: "protein",
-//     numeric: true,
-//     disablePadding: false,
-//     label: "Protein (g)",
-//   },
-// ];
-
 function EnhancedTableHead(props) {
   const {
     headCells,
@@ -116,6 +76,7 @@ function EnhancedTableHead(props) {
         <TableCell padding="checkbox">
           <Checkbox
             color="primary"
+            padding="none"
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
@@ -137,6 +98,7 @@ function EnhancedTableHead(props) {
               onClick={createSortHandler(headCell.id)}
             >
               {headCell.label}
+
               {orderBy === headCell.id ? (
                 <Box component="span" sx={visuallyHidden}>
                   {order === "desc" ? "sorted descending" : "sorted ascending"}
@@ -160,7 +122,7 @@ EnhancedTableHead.propTypes = {
 };
 
 const EnhancedTableToolbar = (props) => {
-  const { numSelected } = props;
+  const { numSelected, handleDelete } = props;
 
   return (
     <Toolbar
@@ -196,16 +158,10 @@ const EnhancedTableToolbar = (props) => {
         </Typography>
       )}
 
-      {numSelected > 0 ? (
+      {numSelected > 0 && (
         <Tooltip title="Delete">
-          <IconButton>
+          <IconButton onClick={handleDelete}>
             <DeleteIcon />
-          </IconButton>
-        </Tooltip>
-      ) : (
-        <Tooltip title="Filter list">
-          <IconButton>
-            <FilterListIcon />
           </IconButton>
         </Tooltip>
       )}
@@ -225,6 +181,8 @@ export default function TableRenderer({ rows, headCells }) {
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
+  const { handleSubmit, control } = useForm();
+
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === "asc";
     setOrder(isAsc ? "desc" : "asc");
@@ -233,7 +191,7 @@ export default function TableRenderer({ rows, headCells }) {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.name);
+      const newSelecteds = rows.map((n) => n.nationalCode);
       setSelected(newSelecteds);
       return;
     }
@@ -242,6 +200,7 @@ export default function TableRenderer({ rows, headCells }) {
 
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
+    console.log(selectedIndex);
     let newSelected = [];
 
     if (selectedIndex === -1) {
@@ -259,6 +218,7 @@ export default function TableRenderer({ rows, headCells }) {
 
     setSelected(newSelected);
   };
+  // console.log(selected[0]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -273,16 +233,28 @@ export default function TableRenderer({ rows, headCells }) {
     setDense(event.target.checked);
   };
 
+  const handleDelete = async () => {
+    for (let key of selected) {
+      const deletedUser = await userService.deleteUser(key);
+      console.log(deletedUser);
+    }
+    setSelected([]);
+  };
+
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
+  if (rows.length === 0) return null;
   return (
     <Box sx={{ width: "100%" }}>
       <Paper sx={{ width: "100%", mb: 2 }}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar
+          numSelected={selected.length}
+          handleDelete={handleDelete}
+        />
         <TableContainer>
           <Table
             sx={{ minWidth: 750 }}
@@ -304,13 +276,14 @@ export default function TableRenderer({ rows, headCells }) {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.name);
-                  const labelId = `enhanced-table-checkbox-${index}`;
+                  const isItemSelected = isSelected(row.nationalCode);
+                  const labelId = `enhanced-table-checkbox-${row.nationalCode}`;
+                  // const selectedUsers = {row.nationalCode};
 
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.name)}
+                      onClick={(event) => handleClick(event, row.nationalCode)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}

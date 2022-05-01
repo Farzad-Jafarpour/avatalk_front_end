@@ -17,7 +17,7 @@ const Users = () => {
 
   if (!users.length === 0) return null;
 
-  console.log(users);
+  // console.log(users);
   const headCells = [
     {
       id: "name",
@@ -77,7 +77,7 @@ const Users = () => {
           <TableRenderer sx={{ mt: 12 }} rows={users} headCells={headCells} />
         </Box>
       </Box>
-      <Copyright sx={{ pt: 4 }} companyName="Avatalk" />
+      <Copyright sx={{ pt: 4 }} companyname="Avatalk" />
     </>
   );
 };
