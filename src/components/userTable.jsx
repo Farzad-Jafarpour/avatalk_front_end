@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import MaterialTable from "material-table";
+import MaterialTable, { MTableToolbar } from "material-table";
+import Button from "@mui/material/Button";
 import userService from "../services/userService";
 // Import Material Icons
 import { forwardRef } from "react";
@@ -19,7 +20,7 @@ import Remove from "@material-ui/icons/Remove";
 import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
-import { Add } from "@mui/icons-material";
+import { Add, Filter } from "@mui/icons-material";
 
 const UserTable = ({ columns, data }) => {
   const tableIcons = {
@@ -53,7 +54,7 @@ const UserTable = ({ columns, data }) => {
     const deletedUser = await userService.deleteUser(data.nationalCode);
     console.log(`the ${data.name} ${data.lastName} ${message}`);
   };
-  //
+
   return (
     <div className="App wrapper">
       <MaterialTable
@@ -77,9 +78,24 @@ const UserTable = ({ columns, data }) => {
         }}
         columns={columns}
         data={data}
+        components={{
+          Toolbar: (props) => (
+            <div>
+              <MTableToolbar {...props} />
+              <div style={{ padding: "0px 10px", textAlign: "left" }}>
+                <Button
+                  variant="contained"
+                  style={{ marginLeft: 5 }}
+                  href="/adduser"
+                >
+                  <Add label="Chip 1" color="#000" />
+                </Button>
+              </div>
+            </div>
+          ),
+        }}
       />
     </div>
   );
 };
-
 export default UserTable;

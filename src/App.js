@@ -13,6 +13,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "react-toastify/dist/ReactToastify.css";
 import CssBaseline from "@mui/material/CssBaseline";
 import "./App.css";
+import AddUser from "./components/addUser";
 
 const theme = createTheme();
 
@@ -34,6 +35,7 @@ class App extends Component {
           <main className="container">
             <Routes className="content">
               <Route path="/signup" element={<SignUp />} />
+              <Route path="/adduser" element={<AddUser />} />
               <Route path="/users" element={<Users />} />
               <Route path="/classroom" element={<Classroom />} />
               <Route path="/classes" element={<ClassesNew />} />
