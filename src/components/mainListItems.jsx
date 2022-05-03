@@ -7,25 +7,28 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PeopleIcon from "@mui/icons-material/People";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import LayersIcon from "@mui/icons-material/Layers";
+import HomeIcon from "@mui/icons-material/Home";
 import NaturePeopleTwoToneIcon from "@mui/icons-material/NaturePeopleTwoTone";
 
 const MainListItems = () => {
   return (
     <React.Fragment>
+      <Link href="/">
+        <ListItemButton>
+          <ListItemIcon>
+            <HomeIcon />
+          </ListItemIcon>
+          <ListItemText primary="Home" />
+        </ListItemButton>
+      </Link>
       <Link href="/users">
         <ListItemButton>
           <ListItemIcon>
-            <NaturePeopleTwoToneIcon color="secondary" />
+            <NaturePeopleTwoToneIcon />
           </ListItemIcon>
           <ListItemText primary="Users" />
         </ListItemButton>
       </Link>
-      <ListItemButton>
-        <ListItemIcon>
-          <ShoppingCartIcon />
-        </ListItemIcon>
-        <ListItemText primary="Orders" />
-      </ListItemButton>
       <ListItemButton>
         <ListItemIcon>
           <PeopleIcon />
