@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import Edit from "@material-ui/icons/Edit";
+import Edit from "@mui/icons-material/Edit";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Copyright from "../common/copyright";

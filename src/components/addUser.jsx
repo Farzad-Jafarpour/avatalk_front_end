@@ -6,7 +6,7 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import AddBox from "@material-ui/icons/AddBox";
+import AddBox from "@mui/icons-material/AddBox";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Copyright from "../common/copyright";
