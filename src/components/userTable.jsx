@@ -1,27 +1,29 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, forwardRef } from "react";
 import MaterialTable, { MTableToolbar } from "material-table";
-import Button from "@mui/material/Button";
+import { Button } from "@mui/material";
+
+// Import Material Icons
+import {
+  Add,
+  AddBox,
+  ArrowDownward,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  Clear,
+  Delete,
+  DeleteOutline,
+  Edit,
+  FilterList,
+  FirstPage,
+  LastPage,
+  Remove,
+  SaveAlt,
+  Search,
+  ViewColumn,
+} from "@mui/icons-material";
 import userService from "../services/userService";
 import EditUser from "./editUser";
-// Import Material Icons
-import { forwardRef } from "react";
-import AddBox from "@mui/icons-material/AddBox";
-import ArrowDownward from "@mui/icons-material/ArrowDownward";
-import Check from "@mui/icons-material/Check";
-import ChevronLeft from "@mui/icons-material/ChevronLeft";
-import ChevronRight from "@mui/icons-material/ChevronRight";
-import Clear from "@mui/icons-material/Clear";
-import Delete from "@mui/icons-material/Delete";
-import DeleteOutline from "@mui/icons-material/DeleteOutline";
-import Edit from "@mui/icons-material/Edit";
-import FilterList from "@mui/icons-material/FilterList";
-import FirstPage from "@mui/icons-material/FirstPage";
-import LastPage from "@mui/icons-material/LastPage";
-import Remove from "@mui/icons-material/Remove";
-import SaveAlt from "@mui/icons-material/SaveAlt";
-import Search from "@mui/icons-material/Search";
-import ViewColumn from "@mui/icons-material/ViewColumn";
-import { Add, Filter } from "@mui/icons-material";
 
 const UserTable = ({ columns, data }) => {
   const [modalOpen, setModalOpen] = useState(false);

@@ -21,8 +21,7 @@
 // export default Input;
 
 import { useForm, Controller } from "react-hook-form";
-import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Grid";
+import { TextField, Grid } from "@mui/material";
 
 export default function RenderInput({ name, label, ...rest }) {
   return (

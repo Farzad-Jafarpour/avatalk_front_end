@@ -1,10 +1,7 @@
 import * as React from "react";
 import MiniDrawer from "./drawer";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
+import { Box, Toolbar, Container, Grid, Paper } from "@mui/material";
+
 import Chart from "./chart";
 import Deposits from "./deposits";
 import Orders from "./orders";

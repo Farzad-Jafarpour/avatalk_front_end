@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { CssBaseline, createTheme, ThemeProvider } from "@mui/material";
 import auth from "./services/authService";
 import SignUp from "./components/signup";
 import Users from "./components/users";
@@ -9,9 +10,8 @@ import Logout from "./components/logout";
 import Home from "./components/home";
 import Classroom from "./components/classroom";
 import ClassesNew from "./components/classesNew";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "react-toastify/dist/ReactToastify.css";
-import CssBaseline from "@mui/material/CssBaseline";
+
 import "./App.css";
 import AddUser from "./components/addUser";
 

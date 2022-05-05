@@ -1,13 +1,15 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+import {
+  Avatar,
+  Button,
+  Link,
+  Grid,
+  Box,
+  Typography,
+  Container,
+} from "@mui/material";
+import { LockOutlined } from "@mui/icons-material";
 import Copyright from "../common/copyright";
 import RenderInput from "../common/input";
 import * as userService from "../services/userService";
@@ -62,7 +64,7 @@ export default function SignUp() {
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
+              <LockOutlined />
             </Avatar>
             <Typography component="h1" variant="h5">
               Sign up

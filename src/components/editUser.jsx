@@ -1,15 +1,16 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
-import { Modal } from "@mui/material";
-
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Edit from "@mui/icons-material/Edit";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+import {
+  Modal,
+  Avatar,
+  Button,
+  Link,
+  Box,
+  Grid,
+  Typography,
+  Container,
+} from "@mui/material";
+import { Edit } from "@mui/icons-material";
 import Copyright from "../common/copyright";
 import RenderInput from "../common/input";
 import * as userService from "../services/userService";

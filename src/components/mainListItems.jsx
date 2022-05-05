@@ -1,14 +1,18 @@
 import * as React from "react";
-import Link from "@mui/material/Link";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import PeopleIcon from "@mui/icons-material/People";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import LayersIcon from "@mui/icons-material/Layers";
-import HomeIcon from "@mui/icons-material/Home";
-import NaturePeopleTwoToneIcon from "@mui/icons-material/NaturePeopleTwoTone";
+import {
+  Link,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+
+import {
+  People,
+  BarChart,
+  Layers,
+  Home,
+  NaturePeopleTwoTone,
+} from "@mui/icons-material";
 
 const MainListItems = () => {
   return (
@@ -16,7 +20,7 @@ const MainListItems = () => {
       <Link href="/">
         <ListItemButton>
           <ListItemIcon>
-            <HomeIcon />
+            <Home />
           </ListItemIcon>
           <ListItemText primary="Home" />
         </ListItemButton>
@@ -24,26 +28,26 @@ const MainListItems = () => {
       <Link href="/users">
         <ListItemButton>
           <ListItemIcon>
-            <NaturePeopleTwoToneIcon />
+            <NaturePeopleTwoTone />
           </ListItemIcon>
           <ListItemText primary="Users" />
         </ListItemButton>
       </Link>
       <ListItemButton>
         <ListItemIcon>
-          <PeopleIcon />
+          <People />
         </ListItemIcon>
         <ListItemText primary="Customers" />
       </ListItemButton>
       <ListItemButton>
         <ListItemIcon>
-          <BarChartIcon />
+          <BarChart />
         </ListItemIcon>
         <ListItemText primary="Reports" />
       </ListItemButton>
       <ListItemButton>
         <ListItemIcon>
-          <LayersIcon />
+          <Layers />
         </ListItemIcon>
         <ListItemText primary="Integrations" />
       </ListItemButton>

@@ -10,7 +10,7 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import LockOutlined from "@mui/icons-material/LockOutlined";
 import Copyright from "../common/copyright";
 import RenderInput from "../common/input";
 import auth from "../services/authService";
@@ -61,7 +61,7 @@ export default function Login() {
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
+              <LockOutlined />
             </Avatar>
             <Typography component="h1" variant="h5">
               Log in
