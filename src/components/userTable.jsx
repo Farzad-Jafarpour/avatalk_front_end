@@ -1,6 +1,6 @@
 import React, { useState, forwardRef } from "react";
 import MaterialTable, { MTableToolbar } from "material-table";
-import { Button } from "@mui/material";
+import { Button, Dialog, DialogContent, DialogTitle } from "@mui/material";
 
 // Import Material Icons
 import {
@@ -62,78 +62,69 @@ const UserTable = ({ columns, data }) => {
   };
 
   const handleEdit = (message, data) => {
-    setEditData(data);
-    const currentNationalCode = data.nationalCode;
-    doEdit();
+    setModalOpen(true);
+    // setEditData(data);
+    // const currentNationalCode = data.nationalCode;
+
     // const edditedUSer = await userService.editUser(data);
     // console.log(`the ${data.name} ${data.lastName} ${message}`)
   };
 
   const doEdit = () => {
-    return setModalOpen(true);
+    setModalOpen(true);
   };
-  const handleClose = () => {
-    return setModalOpen(false);
+  const handleCloseModal = () => {
+    setModalOpen(false);
   };
 
   return (
     <React.Fragment>
-      <EditUser
-        data={editData}
-        modalOpen={modalOpen}
-        handleClose={handleClose}
-      />
-      {!modalOpen && (
-        <div className="App wrapper">
-          <EditUser
-            data={editData}
-            modalOpen={modalOpen}
-            handleClose={handleClose}
-          />
-          <>
-            <MaterialTable
-              title="List of users"
-              icons={tableIcons}
-              actions={[
-                {
-                  icon: Edit,
-                  tooltip: "Edit User",
-                  onClick: (event, rowData) =>
-                    handleEdit("is editted ", rowData),
-                },
-                {
-                  icon: Delete,
-                  tooltip: "Delete User",
-                  onClick: (event, rowData) =>
-                    handleDelete("is deleted ", rowData),
-                },
-              ]}
-              options={{
-                exportButton: true,
-                filtering: true,
-              }}
-              columns={columns}
-              data={data}
-              components={{
-                Toolbar: (props) => (
-                  <div>
-                    <MTableToolbar {...props} />
-                    <div style={{ padding: "0px 10px", textAlign: "left" }}>
-                      <Button
-                        variant="contained"
-                        style={{ marginLeft: 5 }}
-                        href="/adduser"
-                      >
-                        <Add label="Chip 1" color="#000" />
-                      </Button>
-                    </div>
-                  </div>
-                ),
-              }}
-            />
-          </>
-        </div>
-      )}
+      <div className="App wrapper">
+        <MaterialTable
+          title="List of users"
+          icons={tableIcons}
+          actions={[
+            {
+              icon: Edit,
+              tooltip: "Edit User",
+              onClick: (event, rowData) => handleEdit("is editted ", rowData),
+            },
+            {
+              icon: Delete,
+              tooltip: "Delete User",
+              onClick: (event, rowData) => handleDelete("is deleted ", rowData),
+            },
+          ]}
+          options={{
+            exportButton: true,
+            filtering: true,
+          }}
+          columns={columns}
+          data={data}
+          components={{
+            Toolbar: (props) => (
+              <div>
+                <MTableToolbar {...props} />
+                <div style={{ padding: "0px 10px", textAlign: "left" }}>
+                  <Button
+                    variant="contained"
+                    style={{ marginLeft: 5 }}
+                    href="/adduser"
+                  >
+                    <Add label="Chip 1" color="#000" />
+                  </Button>
+                </div>
+              </div>
+            ),
+          }}
+        />
+      </div>
+      <Dialog open={modalOpen} onClose={handleCloseModal}>
+        <DialogTitle>Edit User</DialogTitle>
+        <DialogContent>
+          <EditUser data={editData} closeModal={handleCloseModal} />
+        </DialogContent>
+      </Dialog>
     </React.Fragment>
   );
 };
