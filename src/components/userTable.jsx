@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import MaterialTable, { MTableToolbar } from "material-table";
 import Button from "@mui/material/Button";
 import userService from "../services/userService";
+import EditUser from "./editUser";
 // Import Material Icons
 import { forwardRef } from "react";
 import AddBox from "@material-ui/icons/AddBox";
@@ -23,6 +24,8 @@ import ViewColumn from "@material-ui/icons/ViewColumn";
 import { Add, Filter } from "@mui/icons-material";
 
 const UserTable = ({ columns, data }) => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [editData, setEditData] = useState({});
   const tableIcons = {
     Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
     Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
@@ -50,52 +53,86 @@ const UserTable = ({ columns, data }) => {
     )),
     ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />),
   };
+  const customEditIcon = () => {};
   const handleDelete = async (message, data) => {
     const deletedUser = await userService.deleteUser(data.nationalCode);
     console.log(`the ${data.name} ${data.lastName} ${message}`);
   };
 
+  const handleEdit = (message, data) => {
+    setEditData(data);
+    const currentNationalCode = data.nationalCode;
+    doEdit();
+    // const edditedUSer = await userService.editUser(data);
+    // console.log(`the ${data.name} ${data.lastName} ${message}`)
+  };
+
+  const doEdit = () => {
+    return setModalOpen(true);
+  };
+  const handleClose = () => {
+    return setModalOpen(false);
+  };
+
   return (
-    <div className="App wrapper">
-      <MaterialTable
-        title="List of users"
-        icons={tableIcons}
-        actions={[
-          {
-            icon: Edit,
-            tooltip: "Edit User",
-            onClick: (event, rowData) => console.log("is editted ", rowData),
-          },
-          {
-            icon: Delete,
-            tooltip: "Delete User",
-            onClick: (event, rowData) => handleDelete("is deleted ", rowData),
-          },
-        ]}
-        options={{
-          exportButton: true,
-          filtering: true,
-        }}
-        columns={columns}
-        data={data}
-        components={{
-          Toolbar: (props) => (
-            <div>
-              <MTableToolbar {...props} />
-              <div style={{ padding: "0px 10px", textAlign: "left" }}>
-                <Button
-                  variant="contained"
-                  style={{ marginLeft: 5 }}
-                  href="/adduser"
-                >
-                  <Add label="Chip 1" color="#000" />
-                </Button>
-              </div>
-            </div>
-          ),
-        }}
+    <React.Fragment>
+      <EditUser
+        data={editData}
+        modalOpen={modalOpen}
+        handleClose={handleClose}
       />
-    </div>
+      {!modalOpen && (
+        <div className="App wrapper">
+          <EditUser
+            data={editData}
+            modalOpen={modalOpen}
+            handleClose={handleClose}
+          />
+          <>
+            <MaterialTable
+              title="List of users"
+              icons={tableIcons}
+              actions={[
+                {
+                  icon: Edit,
+                  tooltip: "Edit User",
+                  onClick: (event, rowData) =>
+                    handleEdit("is editted ", rowData),
+                },
+                {
+                  icon: Delete,
+                  tooltip: "Delete User",
+                  onClick: (event, rowData) =>
+                    handleDelete("is deleted ", rowData),
+                },
+              ]}
+              options={{
+                exportButton: true,
+                filtering: true,
+              }}
+              columns={columns}
+              data={data}
+              components={{
+                Toolbar: (props) => (
+                  <div>
+                    <MTableToolbar {...props} />
+                    <div style={{ padding: "0px 10px", textAlign: "left" }}>
+                      <Button
+                        variant="contained"
+                        style={{ marginLeft: 5 }}
+                        href="/adduser"
+                      >
+                        <Add label="Chip 1" color="#000" />
+                      </Button>
+                    </div>
+                  </div>
+                ),
+              }}
+            />
+          </>
+        </div>
+      )}
+    </React.Fragment>
   );
 };
 export default UserTable;

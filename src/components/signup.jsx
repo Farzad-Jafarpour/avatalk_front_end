@@ -72,12 +72,15 @@ export default function SignUp() {
                 <RenderInput
                   rules={{ required: "First name is required" }}
                   sm={6}
+                  validate
+                  required
                   name="name"
                   label="First Name"
                   control={control}
                 />
                 <RenderInput
                   rules={{ required: "Last name is required" }}
+                  validate
                   sm={6}
                   name="lastName"
                   required
@@ -89,6 +92,7 @@ export default function SignUp() {
                     required: "National code is required",
                   }}
                   fullWidth
+                  validate
                   name="nationalCode"
                   required
                   label="National Code"
@@ -97,6 +101,7 @@ export default function SignUp() {
                 <RenderInput
                   rules={{ required: "Password is required" }}
                   fullWidth
+                  validate
                   name="password"
                   required
                   label="Password"

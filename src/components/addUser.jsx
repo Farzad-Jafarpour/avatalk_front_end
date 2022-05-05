@@ -71,6 +71,8 @@ export default function AddUser() {
               <Grid container spacing={2}>
                 <RenderInput
                   rules={{ required: "First name is required" }}
+                  validate
+                  required
                   sm={6}
                   name="name"
                   label="First Name"
@@ -78,9 +80,10 @@ export default function AddUser() {
                 />
                 <RenderInput
                   rules={{ required: "Last name is required" }}
+                  validate
+                  required
                   sm={6}
                   name="lastName"
-                  required
                   label="Last Name"
                   control={control}
                 />
@@ -88,14 +91,16 @@ export default function AddUser() {
                   rules={{
                     required: "National code is required",
                   }}
+                  validate
+                  required
                   fullWidth
                   name="nationalCode"
-                  required
                   label="National Code"
                   control={control}
                 />
                 <RenderInput
                   rules={{ required: "Password is required" }}
+                  validate
                   fullWidth
                   name="password"
                   required

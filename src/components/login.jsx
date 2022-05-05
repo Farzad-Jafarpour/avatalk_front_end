@@ -73,6 +73,7 @@ export default function Login() {
                     required: "National code is required",
                   }}
                   fullWidth
+                  validate
                   name="nationalCode"
                   required
                   label="National Code"
@@ -81,6 +82,7 @@ export default function Login() {
                 <RenderInput
                   rules={{ required: "Password is required" }}
                   fullWidth
+                  validate
                   name="password"
                   required
                   label="Password"

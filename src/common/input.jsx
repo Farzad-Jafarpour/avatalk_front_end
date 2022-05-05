@@ -29,12 +29,10 @@ export default function RenderInput({ name, label, ...rest }) {
     <Controller
       {...rest}
       name={name}
-      defaultValue=""
       render={({ field: { onChange, value }, fieldState: { error } }) => (
         <Grid item xs={12} {...rest}>
           <TextField
             {...rest}
-            validate
             label={label}
             variant="filled"
             value={value}
