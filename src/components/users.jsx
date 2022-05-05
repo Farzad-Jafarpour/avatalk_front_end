@@ -6,16 +6,16 @@ import MiniDrawer from "./drawer";
 import UserTable from "./userTable";
 const Users = () => {
   const [users, setUsers] = useState([]);
-  useEffect(async () => {
-    // if (!user) return;
-    const users = await userService.getUsers();
+  useEffect(() => {
+    async function getUsers() {
+      const users = await userService.getUsers();
 
-    if (users) {
-      setUsers(users.data);
+      if (users) {
+        setUsers(users.data);
+      }
     }
+    getUsers();
   }, [users]);
-
-  if (!users.length === 0) return null;
 
   const columns = [
     { title: "Name", field: "name" },
@@ -25,6 +25,8 @@ const Users = () => {
     { title: "Teacher", field: "isTeacher" },
     { title: "Student", field: "isStudent" },
   ];
+
+  if (users.length === 0) return null;
 
   return (
     <>
