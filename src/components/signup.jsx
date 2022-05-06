@@ -102,7 +102,7 @@ export default function SignUp() {
                 />
                 <RenderInput
                   rules={{ required: "Password is required" }}
-                  fullWidth
+                  sx={{ width: 400, maxWidth: "100%" }}
                   validate
                   name="password"
                   required
@@ -113,14 +113,13 @@ export default function SignUp() {
               </Grid>
               <Button
                 type="submit"
-                fullWidth
+                sx={{ width: 400, maxWidth: "100%", mt: 3 }}
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
               >
                 Sign Up
               </Button>
               <Grid container justifyContent="center">
-                <Grid item>
+                <Grid sx={{ mt: 2 }} item>
                   <Link href="/login" variant="body2">
                     Already have an account? Log in
                   </Link>

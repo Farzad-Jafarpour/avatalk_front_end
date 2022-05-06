@@ -38,22 +38,6 @@ export default function EditUser({ data, closeModal }) {
 
   return (
     <Grid container component="main" sx={{ height: "80vh" }}>
-      <Grid
-        item
-        xs={false}
-        sm={4}
-        md={7}
-        sx={{
-          backgroundImage: "url(https://source.unsplash.com/random)",
-          backgroundRepeat: "no-repeat",
-          backgroundColor: (t) =>
-            t.palette.mode === "light"
-              ? t.palette.grey[50]
-              : t.palette.grey[900],
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
       <form onSubmit={handleSubmit(onSubmit)}>
         <Container component="main" maxWidth="xs">
           <Box
@@ -64,7 +48,12 @@ export default function EditUser({ data, closeModal }) {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "primary" }}>
+            <Avatar
+              sx={{
+                m: 1,
+                bgcolor: "primary",
+              }}
+            >
               <Edit />
             </Avatar>
             {/* <Typography component="h1" variant="h5">
@@ -73,6 +62,7 @@ export default function EditUser({ data, closeModal }) {
             <Box component="div" sx={{ mt: 3 }}>
               <Grid container spacing={2}>
                 <RenderInput
+                  sx={{ width: 400, maxWidth: "100%" }}
                   rules={{ required: "First name is required" }}
                   sm={6}
                   name="name"
@@ -83,6 +73,7 @@ export default function EditUser({ data, closeModal }) {
                   control={control}
                 />
                 <RenderInput
+                  sx={{ width: 400, maxWidth: "100%" }}
                   rules={{ required: "Last name is required" }}
                   sm={6}
                   name="lastName"
@@ -93,19 +84,19 @@ export default function EditUser({ data, closeModal }) {
                   control={control}
                 />
                 <RenderInput
+                  sx={{ width: 400, maxWidth: "100%" }}
                   rules={{
                     required: "National code is required",
                   }}
-                  fullWidth
                   name="nationalCode"
                   defaultValue={data.nationalCode}
-                  required
                   validate
+                  required
                   label="National Code"
                   control={control}
                 />
                 <RenderInput
-                  fullWidth
+                  sx={{ width: 400, maxWidth: "100%" }}
                   defaultValue={data.password}
                   noValidate
                   name="password"
@@ -123,15 +114,19 @@ export default function EditUser({ data, closeModal }) {
               alignItems: "center",
             }}
           >
-            <Grid container spacing={2} columns={16} sx={{ mt: 2, ml: 5 }}>
+            <Grid container spacing={2} columns={16} sx={{ mt: 2 }}>
               <Grid item xs={8}>
-                <Button sx={{ ml: 0 }} type="submit" variant="contained">
+                <Button
+                  sx={{ width: 400, maxWidth: "100%" }}
+                  type="submit"
+                  variant="contained"
+                >
                   Edit the user
                 </Button>
               </Grid>
               <Grid item xs={8}>
                 <Button
-                  sx={{ ml: 3 }}
+                  sx={{ width: 400, maxWidth: "100%" }}
                   type="submit"
                   variant="contained"
                   onClick={closeModal}

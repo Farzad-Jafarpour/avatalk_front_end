@@ -64,10 +64,10 @@ const UserTable = ({ columns, data }) => {
   const handleEdit = (message, data) => {
     setModalOpen(true);
     setEditData(data);
-    const currentNationalCode = data.nationalCode;
+    // const currentNationalCode = data.nationalCode;
+    console.log(`the ${data.name} ${data.lastName} ${message}`);
 
     // const edditedUSer = await userService.editUser(data);
-    // console.log(`the ${data.name} ${data.lastName} ${message}`)
   };
 
   const doEdit = () => {

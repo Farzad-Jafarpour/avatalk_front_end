@@ -94,12 +94,12 @@ export default function Login() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3, width: 400, maxWidth: "100%" }}
               >
                 Log in
               </Button>
               <Grid container justifyContent="center">
-                <Grid item>
+                <Grid sx={{ mt: 2 }} item>
                   <Link href="/signup" variant="body2">
                     Don't have an account? Sign Up
                   </Link>

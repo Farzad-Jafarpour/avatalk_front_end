@@ -94,7 +94,7 @@ export default function AddUser() {
                   }}
                   validate
                   required
-                  fullWidth
+                  sx={{ width: 400, maxWidth: "100%" }}
                   name="nationalCode"
                   label="National Code"
                   control={control}
@@ -102,7 +102,7 @@ export default function AddUser() {
                 <RenderInput
                   rules={{ required: "Password is required" }}
                   validate
-                  fullWidth
+                  sx={{ width: 400, maxWidth: "100%" }}
                   name="password"
                   required
                   label="Password"
@@ -119,15 +119,19 @@ export default function AddUser() {
               alignItems: "center",
             }}
           >
-            <Grid container spacing={2} columns={16} sx={{ mt: 2, ml: 5 }}>
+            <Grid container spacing={2} columns={16} sx={{ mt: 2 }}>
               <Grid item xs={8}>
-                <Button sx={{ ml: 0 }} type="submit" variant="contained">
+                <Button
+                  sx={{ width: 500, maxWidth: "100%" }}
+                  type="submit"
+                  variant="contained"
+                >
                   Add the user
                 </Button>
               </Grid>
               <Grid item xs={8}>
                 <Button
-                  sx={{ ml: 3 }}
+                  sx={{ width: 500, maxWidth: "100%" }}
                   type="submit"
                   variant="contained"
                   href="/users"
