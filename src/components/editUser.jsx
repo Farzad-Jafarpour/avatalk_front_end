@@ -55,33 +55,43 @@ export default function EditUser({ data, closeModal, onEditNationalCode }) {
             >
               <Edit />
             </Avatar>
-            {/* <Typography component="h1" variant="h5">
-                    Add
-                  </Typography> */}
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Grid container spacing={2} columns={12} sx={{ mt: 3 }}>
+                <Grid item xs={6}>
+                  <RenderInput
+                    rules={{ required: "First name is required" }}
+                    sm={6}
+                    name="name"
+                    required
+                    validate
+                    label="First Name"
+                    defaultValue={data.name}
+                    control={control}
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <RenderInput
+                    rules={{ required: "Last name is required" }}
+                    sm={6}
+                    name="lastName"
+                    required
+                    validate
+                    label="Last Name"
+                    defaultValue={data.lastName}
+                    control={control}
+                  />
+                </Grid>
+              </Grid>
+            </Box>
             <Box component="div" sx={{ mt: 3 }}>
               <Grid container spacing={2}>
-                <RenderInput
-                  sx={{ width: 400, maxWidth: "100%" }}
-                  rules={{ required: "First name is required" }}
-                  sm={6}
-                  name="name"
-                  required
-                  validate
-                  label="First Name"
-                  defaultValue={data.name}
-                  control={control}
-                />
-                <RenderInput
-                  sx={{ width: 400, maxWidth: "100%" }}
-                  rules={{ required: "Last name is required" }}
-                  sm={6}
-                  name="lastName"
-                  required
-                  validate
-                  label="Last Name"
-                  defaultValue={data.lastName}
-                  control={control}
-                />
                 <RenderInput
                   sx={{ width: 400, maxWidth: "100%" }}
                   rules={{

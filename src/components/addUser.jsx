@@ -69,25 +69,41 @@ export default function AddUser() {
               Add
             </Typography> */}
             <Box component="div" sx={{ mt: 3 }}>
+              <Box
+                sx={{
+                  flexGrow: 1,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  mb: 2,
+                }}
+              >
+                <Grid container spacing={2} columns={12} sx={{ mt: 2 }}>
+                  <Grid item xs={6}>
+                    <RenderInput
+                      rules={{ required: "First name is required" }}
+                      validate
+                      required
+                      sm={6}
+                      name="name"
+                      label="First Name"
+                      control={control}
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <RenderInput
+                      rules={{ required: "Last name is required" }}
+                      validate
+                      required
+                      sm={6}
+                      name="lastName"
+                      label="Last Name"
+                      control={control}
+                    />
+                  </Grid>
+                </Grid>
+              </Box>
               <Grid container spacing={2}>
-                <RenderInput
-                  rules={{ required: "First name is required" }}
-                  validate
-                  required
-                  sm={6}
-                  name="name"
-                  label="First Name"
-                  control={control}
-                />
-                <RenderInput
-                  rules={{ required: "Last name is required" }}
-                  validate
-                  required
-                  sm={6}
-                  name="lastName"
-                  label="Last Name"
-                  control={control}
-                />
                 <RenderInput
                   rules={{
                     required: "National code is required",

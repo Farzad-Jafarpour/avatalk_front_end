@@ -70,47 +70,62 @@ export default function SignUp() {
               Sign up
             </Typography>
             <Box component="div" sx={{ mt: 3 }}>
-              <Grid container spacing={2}>
-                <RenderInput
-                  rules={{ required: "First name is required" }}
-                  sm={6}
-                  validate
-                  required
-                  name="name"
-                  label="First Name"
-                  control={control}
-                />
-                <RenderInput
-                  rules={{ required: "Last name is required" }}
-                  validate
-                  sm={6}
-                  name="lastName"
-                  required
-                  label="Last Name"
-                  control={control}
-                />
-                <RenderInput
-                  rules={{
-                    required: "National code is required",
-                  }}
-                  fullWidth
-                  validate
-                  name="nationalCode"
-                  required
-                  label="National Code"
-                  control={control}
-                />
-                <RenderInput
-                  rules={{ required: "Password is required" }}
-                  sx={{ width: 400, maxWidth: "100%" }}
-                  validate
-                  name="password"
-                  required
-                  label="Password"
-                  type="password"
-                  control={control}
-                />
-              </Grid>
+              <Box
+                sx={{
+                  flexGrow: 1,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  mb: 2,
+                }}
+              >
+                <Grid container spacing={2} columns={12} sx={{ mt: 2 }}>
+                  <Grid item xs={6}>
+                    <RenderInput
+                      rules={{ required: "First name is required" }}
+                      validate
+                      required
+                      sm={6}
+                      name="name"
+                      label="First Name"
+                      control={control}
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <RenderInput
+                      rules={{ required: "Last name is required" }}
+                      validate
+                      required
+                      sm={6}
+                      name="lastName"
+                      label="Last Name"
+                      control={control}
+                    />
+                  </Grid>
+                </Grid>
+              </Box>
+              <RenderInput
+                rules={{
+                  required: "National code is required",
+                }}
+                fullWidth
+                validate
+                name="nationalCode"
+                required
+                label="National Code"
+                control={control}
+              />
+              <RenderInput
+                rules={{ required: "Password is required" }}
+                sx={{ width: 400, maxWidth: "100%" }}
+                validate
+                name="password"
+                required
+                label="Password"
+                type="password"
+                control={control}
+              />
+
               <Button
                 type="submit"
                 sx={{ width: 400, maxWidth: "100%", mt: 3 }}
