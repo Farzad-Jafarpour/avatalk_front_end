@@ -28,6 +28,7 @@ import EditUser from "./editUser";
 const UserTable = ({ columns, data }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editData, setEditData] = useState({});
+  const [onEditNationalCode, setOnEditNationalCode] = useState({});
   const tableIcons = {
     Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
     Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
@@ -64,7 +65,7 @@ const UserTable = ({ columns, data }) => {
   const handleEdit = (message, data) => {
     setModalOpen(true);
     setEditData(data);
-    // const currentNationalCode = data.nationalCode;
+    setOnEditNationalCode(data.nationalCode);
     console.log(`the ${data.name} ${data.lastName} ${message}`);
 
     // const edditedUSer = await userService.editUser(data);
@@ -122,7 +123,11 @@ const UserTable = ({ columns, data }) => {
       <Dialog open={modalOpen} onClose={handleCloseModal}>
         <DialogTitle>Edit User</DialogTitle>
         <DialogContent>
-          <EditUser data={editData} closeModal={handleCloseModal} />
+          <EditUser
+            data={editData}
+            closeModal={handleCloseModal}
+            onEditNationalCode={onEditNationalCode}
+          />
         </DialogContent>
       </Dialog>
     </React.Fragment>

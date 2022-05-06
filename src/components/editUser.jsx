@@ -16,15 +16,14 @@ import RenderInput from "../common/input";
 import * as userService from "../services/userService";
 import auth from "../services/authService";
 
-export default function EditUser({ data, closeModal }) {
+export default function EditUser({ data, closeModal, onEditNationalCode }) {
   // const [error, setError] = useState({});
   const { handleSubmit, control } = useForm();
 
   const onSubmit = async (data) => {
     try {
-      const response = await userService.editUser(data);
+      const response = await userService.editUser(data, onEditNationalCode);
       window.location = "/users";
-      closeModal();
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...data.errors };
@@ -120,6 +119,7 @@ export default function EditUser({ data, closeModal }) {
                   sx={{ width: 400, maxWidth: "100%" }}
                   type="submit"
                   variant="contained"
+                  onClick={closeModal}
                 >
                   Edit the user
                 </Button>
