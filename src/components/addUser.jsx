@@ -1,19 +1,10 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
-import {
-  Avatar,
-  Button,
-  Link,
-  Grid,
-  Box,
-  Typography,
-  Container,
-} from "@mui/material";
+import { Avatar, Button, Grid, Box, Container } from "@mui/material";
 import { AddBox, LockOutlined } from "@mui/icons-material";
 import Copyright from "../common/copyright";
 import RenderInput from "../common/input";
 import * as userService from "../services/userService";
-import auth from "../services/authService";
 
 export default function AddUser() {
   // const [error, setError] = useState({});
@@ -22,6 +13,7 @@ export default function AddUser() {
   const onSubmit = async (data) => {
     try {
       const response = await userService.register(data);
+      console.log(response);
       window.location = "/users";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {

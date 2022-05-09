@@ -82,8 +82,10 @@ export default function SignUp() {
                 <Grid container spacing={2} columns={12} sx={{ mt: 2 }}>
                   <Grid item xs={6}>
                     <RenderInput
-                      rules={{ required: "First name is required" }}
-                      validate
+                      rules={{
+                        required: "First name is required",
+                        minLength: 6,
+                      }}
                       required
                       sm={6}
                       name="name"
@@ -94,7 +96,6 @@ export default function SignUp() {
                   <Grid item xs={6}>
                     <RenderInput
                       rules={{ required: "Last name is required" }}
-                      validate
                       required
                       sm={6}
                       name="lastName"
@@ -109,7 +110,6 @@ export default function SignUp() {
                   required: "National code is required",
                 }}
                 fullWidth
-                validate
                 name="nationalCode"
                 required
                 label="National Code"
@@ -118,7 +118,6 @@ export default function SignUp() {
               <RenderInput
                 rules={{ required: "Password is required" }}
                 sx={{ width: 400, maxWidth: "100%" }}
-                validate
                 name="password"
                 required
                 label="Password"

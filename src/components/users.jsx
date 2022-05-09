@@ -43,12 +43,6 @@ const Users = () => {
             mt: 12,
           }}
         >
-          {/* <TableRenderer
-            sx={{ mt: 12 }}
-            rows={users}
-            headCells={headCells}
-            handleFilter={handleFilter}
-          /> */}
           <UserTable columns={columns} data={users} />
         </Box>
       </Box>

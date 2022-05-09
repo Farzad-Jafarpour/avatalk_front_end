@@ -1,29 +1,29 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
-import {
-  Modal,
-  Avatar,
-  Button,
-  Link,
-  Box,
-  Grid,
-  Typography,
-  Container,
-} from "@mui/material";
+import { Avatar, Button, Box, Grid, Container } from "@mui/material";
 import { Edit } from "@mui/icons-material";
 import Copyright from "../common/copyright";
 import RenderInput from "../common/input";
 import * as userService from "../services/userService";
-import auth from "../services/authService";
 
 export default function EditUser({ data, closeModal, onEditNationalCode }) {
-  // const [error, setError] = useState({});
   const { handleSubmit, control } = useForm();
-
+  const defaultValues = { ...data };
   const onSubmit = async (data) => {
     try {
-      const response = await userService.editUser(data, onEditNationalCode);
+      let modifiedData = { ...data };
+      modifiedData.name = data.name || defaultValues.name;
+      modifiedData.lastName = data.lastName || defaultValues.lastName;
+      modifiedData.nationalCode =
+        data.nationalCode || defaultValues.nationalCode;
+      modifiedData.password = false || data.nationalCode;
+
+      const response = await userService.editUser(
+        modifiedData,
+        onEditNationalCode
+      );
       window.location = "/users";
+      closeModal();
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...data.errors };
@@ -66,11 +66,10 @@ export default function EditUser({ data, closeModal, onEditNationalCode }) {
               <Grid container spacing={2} columns={12} sx={{ mt: 3 }}>
                 <Grid item xs={6}>
                   <RenderInput
-                    rules={{ required: "First name is required" }}
+                    rules={{ required: true }}
                     sm={6}
                     name="name"
                     required
-                    validate
                     label="First Name"
                     defaultValue={data.name}
                     control={control}
@@ -82,7 +81,6 @@ export default function EditUser({ data, closeModal, onEditNationalCode }) {
                     sm={6}
                     name="lastName"
                     required
-                    validate
                     label="Last Name"
                     defaultValue={data.lastName}
                     control={control}
@@ -99,7 +97,6 @@ export default function EditUser({ data, closeModal, onEditNationalCode }) {
                   }}
                   name="nationalCode"
                   defaultValue={data.nationalCode}
-                  validate
                   required
                   label="National Code"
                   control={control}
@@ -107,7 +104,6 @@ export default function EditUser({ data, closeModal, onEditNationalCode }) {
                 <RenderInput
                   sx={{ width: 400, maxWidth: "100%" }}
                   defaultValue={data.password}
-                  noValidate
                   name="password"
                   label="Password"
                   type="password"
@@ -139,7 +135,7 @@ export default function EditUser({ data, closeModal, onEditNationalCode }) {
                   sx={{ width: 400, maxWidth: "100%" }}
                   type="submit"
                   variant="contained"
-                  onClick={closeModal}
+                  onClick={onSubmit}
                 >
                   Cancel
                 </Button>

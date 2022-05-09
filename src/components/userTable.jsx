@@ -1,6 +1,12 @@
 import React, { useState, forwardRef } from "react";
 import MaterialTable, { MTableToolbar } from "material-table";
-import { Button, Dialog, DialogContent, DialogTitle } from "@mui/material";
+import {
+  Link,
+  Button,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+} from "@mui/material";
 
 // Import Material Icons
 import {
@@ -56,10 +62,9 @@ const UserTable = ({ columns, data }) => {
     )),
     ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />),
   };
-  const customEditIcon = () => {};
   const handleDelete = async (message, data) => {
     const deletedUser = await userService.deleteUser(data.nationalCode);
-    console.log(`the ${data.name} ${data.lastName} ${message}`);
+    console.log(`the ${data.name} ${data.lastName} ${message}`, deletedUser);
   };
 
   const handleEdit = (message, data) => {
@@ -71,9 +76,6 @@ const UserTable = ({ columns, data }) => {
     // const edditedUSer = await userService.editUser(data);
   };
 
-  const doEdit = () => {
-    setModalOpen(true);
-  };
   const handleCloseModal = () => {
     setModalOpen(false);
   };
@@ -107,13 +109,11 @@ const UserTable = ({ columns, data }) => {
               <div>
                 <MTableToolbar {...props} />
                 <div style={{ padding: "0px 10px", textAlign: "left" }}>
-                  <Button
-                    variant="contained"
-                    style={{ marginLeft: 5 }}
-                    href="/adduser"
-                  >
-                    <Add label="Chip 1" color="#000" />
-                  </Button>
+                  <Link href="/adduser" underline="none">
+                    <Button variant="contained" style={{ marginLeft: 5 }}>
+                      <Add label="Chip 1" color="#000" />
+                    </Button>
+                  </Link>
                 </div>
               </div>
             ),
