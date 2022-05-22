@@ -66,7 +66,7 @@ export default function EditUser({ data, closeModal, onEditNationalCode }) {
               <Grid container spacing={2} columns={12} sx={{ mt: 3 }}>
                 <Grid item xs={6}>
                   <RenderInput
-                    rules={{ required: "First name is required" }}
+                    rules={{ required: true }}
                     sm={6}
                     name="name"
                     required
@@ -133,8 +133,9 @@ export default function EditUser({ data, closeModal, onEditNationalCode }) {
               <Grid item xs={8}>
                 <Button
                   sx={{ width: 400, maxWidth: "100%" }}
+                  type="submit"
                   variant="contained"
-                  onClick={closeModal}
+                  onClick={onSubmit}
                 >
                   Cancel
                 </Button>
