@@ -10,10 +10,11 @@ import Logout from "./components/logout";
 import Home from "./components/home";
 import Classroom from "./components/classroom";
 import ClassesNew from "./components/classesNew";
+import AddUser from "./components/addUser";
+import HomePage from "./components/homePage";
 import "react-toastify/dist/ReactToastify.css";
 
 import "./App.css";
-import AddUser from "./components/addUser";
 
 const theme = createTheme();
 
@@ -41,6 +42,7 @@ class App extends Component {
               <Route path="/classes" element={<ClassesNew />} />
               <Route path="/login" element={<Login />} />
               <Route path="/logout" element={<Logout />} />
+              <Route path="/homepage" element={<HomePage />} />
               <Route path="/" element={<Home />} />
             </Routes>
           </main>
