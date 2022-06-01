@@ -65,12 +65,18 @@ function DashboardContent() {
                     flex: 1,
                     justifyContent: "center",
                     alignItems: "center",
-                    flexDirection: { xs: "column", md: "row", height: "90vh" },
+                    height: "90vh",
                   }}
                 >
-                  <Box sx={{ width: { md: "33%", xs: "100%" } }}>Course 1</Box>
-                  <Box sx={{ width: { md: "33%", xs: "100%" } }}>Course 2</Box>
-                  <Box sx={{ width: { md: "33%", xs: "100%" } }}>Course 3</Box>
+                  <RecipeReviewCard
+                    style={{ objectFit: "none", height: "100%" }}
+                  />
+                  <RecipeReviewCard
+                    style={{ objectFit: "fill", height: "100%" }}
+                  />
+                  <RecipeReviewCard
+                    style={{ objectFit: "fill", height: "100%" }}
+                  />
                 </Box>
               </Box>
               <Box sx={{ width: { xs: "80vw", md: "39vw" } }}>
@@ -80,11 +86,15 @@ function DashboardContent() {
                     justifyContent: "center",
                     alignItems: "center",
                     m: 1,
-                    height: "49vh",
+                    height: { md: "49vh", xs: "33vh" },
                     border: "solid",
                   }}
                 >
-                  Jpt
+                  <Carousel sx={{ height: "100%", width: "100%" }}>
+                    <RecipeReviewCard sx={{ objectFit: "fill" }} />
+                    <RecipeReviewCard sx={{ objectFit: "fill" }} />
+                    <RecipeReviewCard sx={{ objectFit: "fill" }} />
+                  </Carousel>
                 </Box>
                 <Box
                   display="flex"
@@ -93,10 +103,22 @@ function DashboardContent() {
                     alignItems: "center",
                     m: 1,
                     height: "49vh",
-                    border: "solid",
                   }}
                 >
-                  Css
+                  <Carousel sx={{ height: "100%", width: "100%" }}>
+                    {CarouselData.map((item) => (
+                      <Box sx={{ height: "100%", width: "100%" }}>
+                        <img
+                          style={{
+                            height: "100%",
+                            width: "100%",
+                            objectFit: "fill",
+                          }}
+                          src={item.image}
+                        />
+                      </Box>
+                    ))}
+                  </Carousel>
                 </Box>
               </Box>
             </Box>
