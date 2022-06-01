@@ -6,6 +6,7 @@ import { CarouselData } from "./carouselData";
 import { Typography } from "@mui/material";
 import Copyright from "../common/copyright";
 import RecipeReviewCard from "./../common/card";
+import { Rowing } from "@mui/icons-material";
 
 function DashboardContent() {
   // const [open, setOpen] = React.useState(false);
@@ -34,7 +35,6 @@ function DashboardContent() {
               display="flex"
               sx={{
                 flex: 1,
-
                 flexDirection: {
                   xs: "column",
                   md: "row",
@@ -45,15 +45,59 @@ function DashboardContent() {
                 sx={{
                   m: 1,
                   height: "100vh",
-                  width: { xs: "100vw", md: "60vw" },
+                  width: { xs: "77vw", md: "60vw" },
                 }}
                 style={{ border: "solid" }}
               >
-                farzad
+                <Box
+                  sx={{
+                    background: "#1976d2",
+                    textAlign: "center",
+                    borderRadius: "0px 10px 0px 10px ",
+                    width: "120px",
+                  }}
+                >
+                  Course Name
+                </Box>
+                <Box
+                  display="flex"
+                  sx={{
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexDirection: { xs: "column", md: "row", height: "90vh" },
+                  }}
+                >
+                  <Box sx={{ width: { md: "33%", xs: "100%" } }}>Course 1</Box>
+                  <Box sx={{ width: { md: "33%", xs: "100%" } }}>Course 2</Box>
+                  <Box sx={{ width: { md: "33%", xs: "100%" } }}>Course 3</Box>
+                </Box>
               </Box>
-              <Box sx={{ width: { xs: "100vw", md: "39vw" } }}>
-                <Box sx={{ m: 1, height: "49vh", border: "solid" }}>Jpt</Box>
-                <Box sx={{ m: 1, height: "49vh", border: "solid" }}>Css</Box>
+              <Box sx={{ width: { xs: "80vw", md: "39vw" } }}>
+                <Box
+                  display="flex"
+                  sx={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    m: 1,
+                    height: "49vh",
+                    border: "solid",
+                  }}
+                >
+                  Jpt
+                </Box>
+                <Box
+                  display="flex"
+                  sx={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    m: 1,
+                    height: "49vh",
+                    border: "solid",
+                  }}
+                >
+                  Css
+                </Box>
               </Box>
             </Box>
             <Copyright sx={{ pt: 4 }} companyname="Avatalk" />
