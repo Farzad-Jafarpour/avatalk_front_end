@@ -9,7 +9,7 @@ const ClassesNew = () => {
 
     if (classes) {
       setClassesData(classes.data);
-      console.log(classes.data);
+      // console.log(classes.data);
     }
   }, []);
 

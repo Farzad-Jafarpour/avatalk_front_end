@@ -10,7 +10,7 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import LockOutlined from "@mui/icons-material/LockOutlined";
 import Copyright from "../common/copyright";
 import RenderInput from "../common/input";
 import auth from "../services/authService";
@@ -22,6 +22,7 @@ export default function Login() {
     try {
       await auth.login(data.nationalCode, data.password);
       window.location = "/";
+      console.log(data);
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...data.errors };
@@ -60,7 +61,7 @@ export default function Login() {
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
+              <LockOutlined />
             </Avatar>
             <Typography component="h1" variant="h5">
               Log in
@@ -80,8 +81,8 @@ export default function Login() {
                 <RenderInput
                   rules={{ required: "Password is required" }}
                   fullWidth
-                  name="password"
                   required
+                  name="password"
                   label="Password"
                   type="password"
                   control={control}
@@ -91,12 +92,12 @@ export default function Login() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3, width: 400, maxWidth: "100%" }}
               >
                 Log in
               </Button>
               <Grid container justifyContent="center">
-                <Grid item>
+                <Grid sx={{ mt: 2 }} item>
                   <Link href="/signup" variant="body2">
                     Don't have an account? Sign Up
                   </Link>
@@ -104,7 +105,7 @@ export default function Login() {
               </Grid>
             </Box>
           </Box>
-          <Copyright sx={{ mt: 5 }} companyName="Avatalk" />
+          <Copyright sx={{ mt: 5 }} companyname="Avatalk" />
         </Container>
       </form>
     </Grid>

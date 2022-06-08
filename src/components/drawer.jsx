@@ -1,17 +1,19 @@
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import MuiDrawer from "@mui/material/Drawer";
-import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import CssBaseline from "@mui/material/CssBaseline";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import auth from "../services/authService";
+import {
+  styled,
+  useTheme,
+  Box,
+  Drawer as MuiDrawer,
+  AppBar as MuiAppBar,
+  Toolbar,
+  List,
+  Typography,
+  Divider,
+  IconButton,
+} from "@mui/material";
+
+import { Menu, ChevronLeft, ChevronRight } from "@mui/icons-material";
 import MainListItems from "./mainListItems";
 import SecondaryListItems from "./secondaryListItems";
 
@@ -82,9 +84,16 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function MiniDrawer({ user }) {
+export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [user, setUser] = React.useState();
+
+  React.useEffect(() => {
+    const currentUser = auth.getCurrentUser();
+    if (currentUser) setUser(currentUser);
+    return;
+  }, []);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -96,7 +105,6 @@ export default function MiniDrawer({ user }) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
           <IconButton
@@ -109,7 +117,7 @@ export default function MiniDrawer({ user }) {
               ...(open && { display: "none" }),
             }}
           >
-            <MenuIcon />
+            <Menu />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
             Dashboard
@@ -119,11 +127,7 @@ export default function MiniDrawer({ user }) {
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
+            {theme.direction === "rtl" ? <ChevronRight /> : <ChevronLeft />}
           </IconButton>
         </DrawerHeader>
         <Divider />

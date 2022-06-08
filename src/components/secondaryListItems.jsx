@@ -1,11 +1,11 @@
 import * as React from "react";
-import Link from "@mui/material/Link";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import { Login, Logout } from "@mui/icons-material";
-import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
-import PersonIcon from "@mui/icons-material/Person";
+import {
+  Link,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import { Login, Logout, AssignmentInd, Person } from "@mui/icons-material";
 
 const SecondaryListItems = ({ user }) => {
   return (
@@ -15,7 +15,7 @@ const SecondaryListItems = ({ user }) => {
           <Link href="/signup">
             <ListItemButton>
               <ListItemIcon>
-                <AssignmentIndIcon />
+                <AssignmentInd />
               </ListItemIcon>
               <ListItemText primary="Sign Up" />
             </ListItemButton>
@@ -35,9 +35,9 @@ const SecondaryListItems = ({ user }) => {
         <>
           <ListItemButton>
             <ListItemIcon>
-              <PersonIcon />
+              <Person />
             </ListItemIcon>
-            <ListItemText primary={user.nationalCode} />
+            <ListItemText primary={`${user.name} ${user.lastName}`} />
           </ListItemButton>
           <Link href="/logout">
             <ListItemButton>

@@ -6,5 +6,30 @@ const { apiUrl } = endpoint;
 const apiEndpoint = apiUrl + "/users";
 
 export function register(user) {
+  if (!user.isAdmin) user.isAdmin = false;
+  if (!user.isTeacher) user.isTeacher = false;
+  if (!user.isStudent) user.isStudent = false;
   return http.post(apiEndpoint, user);
 }
+
+export function getUsers() {
+  return http.get(apiEndpoint);
+}
+
+export function deleteUser(nationalCode) {
+  return http.delete(apiEndpoint + "/" + nationalCode);
+}
+
+export function editUser(user, nationalCode) {
+  if (!user.isAdmin) user.isAdmin = false;
+  if (!user.isTeacher) user.isTeacher = false;
+  if (!user.isStudent) user.isStudent = false;
+  console.log(user);
+  return http.put(apiEndpoint + "/" + nationalCode, user);
+}
+export default {
+  register,
+  getUsers,
+  deleteUser,
+  editUser,
+};

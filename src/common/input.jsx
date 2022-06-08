@@ -20,24 +20,21 @@
 
 // export default Input;
 
-import { useForm, Controller } from "react-hook-form";
-import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Grid";
+import { Controller } from "react-hook-form";
+import { TextField, Grid } from "@mui/material";
 
-export default function RenderInput({ name, label, ...rest }) {
+export default function RenderInput({ name, label, control, ...rest }) {
   return (
     <Controller
-      {...rest}
       name={name}
-      defaultValue=""
+      control={control}
+      validate
       render={({ field: { onChange, value }, fieldState: { error } }) => (
-        <Grid item xs={12} {...rest}>
+        <Grid item xs={12}>
           <TextField
             {...rest}
-            validate
             label={label}
             variant="filled"
-            value={value}
             onChange={onChange}
             error={!!error}
             helperText={error ? error.message : null}
