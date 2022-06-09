@@ -6,13 +6,21 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Dialog, DialogContent, DialogTitle } from "@mui/material";
+import auth from "services/authService";
 
 export default function ImgMediaCard() {
   const [modalOpen, setModalOpen] = React.useState(false);
+  const [user, setUser] = React.useState();
+  React.useEffect(() => {
+    const currentUser = auth.getCurrentUser();
+    if (currentUser) setUser(currentUser);
+    return;
+  }, []);
 
   const handleModal = () => {
     setModalOpen(!modalOpen);
   };
+  console.log(user);
   return (
     <>
       <Card>
@@ -21,15 +29,20 @@ export default function ImgMediaCard() {
           alt="green iguana"
           image="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png"
         />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+        <CardContent sx={{ m: 0, p: "2px" }}>
+          <Typography gutterBottom variant="h6" component="div">
             Course
           </Typography>
         </CardContent>
-        <CardActions>
+        <CardActions sx={{ m: 0, p: "2px" }}>
           <Button onClick={handleModal} size="small">
             Learn More
           </Button>
+          {user && user.isAdmin && (
+            <Button onClick={handleModal} size="small">
+              Edit
+            </Button>
+          )}
         </CardActions>
       </Card>
       <Dialog open={modalOpen} onClose={!modalOpen}>

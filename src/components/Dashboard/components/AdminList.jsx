@@ -21,6 +21,7 @@ const AdminRenderer = () => {
           textAlign: "center",
           borderRadius: " 10px 0px 10px 0px",
           width: "120px",
+          mt: 1,
         }}
       >
         <Link href="/admins" variant="body2" underline="hover" color="#fff">

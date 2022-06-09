@@ -17,7 +17,7 @@ import {
 const MainListItems = () => {
   return (
     <React.Fragment>
-      <Link href="/">
+      <Link href="/" underline="hover" color="#212529">
         <ListItemButton>
           <ListItemIcon>
             <Home />
@@ -25,7 +25,7 @@ const MainListItems = () => {
           <ListItemText primary="Home" />
         </ListItemButton>
       </Link>
-      <Link href="/users">
+      <Link href="/users" underline="hover" color="#212529">
         <ListItemButton>
           <ListItemIcon>
             <NaturePeopleTwoTone />
