@@ -39,7 +39,7 @@ export default function ImgMediaCard() {
             Learn More
           </Button>
           {user && user.isAdmin && (
-            <Button onClick={handleModal} size="small">
+            <Button href="/courseedit" size="small">
               Edit
             </Button>
           )}

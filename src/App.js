@@ -11,10 +11,11 @@ import Home from "./components/home";
 import Classroom from "./components/classroom";
 import ClassesNew from "./components/classesNew";
 import AddUser from "./components/addUser";
-import HomePage from "./components/homePage";
+import HomePage from "./common/homePage/homePage";
 import "react-toastify/dist/ReactToastify.css";
 
 import "./App.css";
+import CourseEditor from "common/homePage/CourseEditor";
 
 const theme = createTheme();
 const App = () => {
@@ -32,19 +33,18 @@ const App = () => {
       <React.Fragment>
         <ToastContainer />
 
-        <main className="container">
-          <Routes className="content">
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/adduser" element={<AddUser />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/classroom" element={<Classroom />} />
-            <Route path="/classes" element={<ClassesNew />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/logout" element={<Logout />} />
-            <Route path="/homepage" element={<HomePage />} />
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </main>
+        <Routes className="content">
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/adduser" element={<AddUser />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/classroom" element={<Classroom />} />
+          <Route path="/classes" element={<ClassesNew />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/homepage" element={<HomePage />} />
+          <Route path="/courseedit" element={<CourseEditor />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
       </React.Fragment>
     </ThemeProvider>
   );

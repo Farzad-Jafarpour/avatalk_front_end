@@ -19,8 +19,8 @@ const CarouselRenderer = () => {
           <Box sx={{ height: "100%", width: "100%" }}>
             <img
               style={{
-                height: "100%",
-                width: "100%",
+                height: "90%",
+                width: "90%",
                 objectFit: "fill",
               }}
               src={item.image}

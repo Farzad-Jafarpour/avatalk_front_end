@@ -11,7 +11,8 @@ const Courses = () => {
         flexDirection: "column",
         flex: 1,
         m: 1,
-        height: "100vh",
+        p: 2,
+        height: "90vh",
       }}
     >
       <Box

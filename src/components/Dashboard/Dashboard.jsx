@@ -9,7 +9,7 @@ import AdminRenderer from "./components/AdminList";
 function DashboardContent() {
   return (
     <>
-      <Box sx={{ display: "flex" }}>
+      <Box sx={{ display: "flex", height: "90vh" }}>
         <Box
           component="main"
           sx={{
@@ -41,7 +41,6 @@ function DashboardContent() {
                 <Grid item xs={12} md={3}>
                   <Box
                     sx={{
-                      width: { xs: "80vw", md: "39vw" },
                       mt: { xs: 10, md: 0 },
                     }}
                   >

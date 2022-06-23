@@ -40,7 +40,6 @@ const AdminRenderer = () => {
       >
         {GridRenderer(ImgMediaCard)}
         {GridRenderer(ImgMediaCard)}
-        {GridRenderer(ImgMediaCard)}
       </Box>
     </Box>
   );
