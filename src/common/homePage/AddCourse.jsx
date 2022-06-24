@@ -6,34 +6,30 @@ import { TextField, Button, Container, Paper, Grid, Box } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import FilesDragAndDrop from "common/FilesDragAndDrop";
 
-const CourseEditor = () => {
-  const [selectedFiles, setSelectedFiles] = useState(null);
+const AddCourse = () => {
+  const [cardImage, setCardImage] = useState();
   const { register, handleSubmit } = useForm();
 
   const handleUploadUserImage = async (image) => {
-    console.log(image);
     const formData = new FormData();
-    formData.append("file", image);
+    formData.append("cardImage", image[0], image[0].name);
+    console.log(image[0]);
     const response = await http.post(
       "http://localhost:3900/api/cards/upload",
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
+      formData
     );
 
-    console.log(response);
+    setCardImage(response.data);
   };
 
-  const onSubmit = async (data, selectedFiles) => {
-    const card = {
-      name: "tests",
-      description: "tested",
-      cardImage: "askdjaksd",
+  const onSubmit = async (data) => {
+    let card = {
+      cardImage: cardImage,
+      name: data.cardName,
+      description: data.cardDescription,
     };
     await http.post("http://localhost:3900/api/cards", card);
+    window.location = "/homepage";
   };
   return (
     <>
@@ -134,4 +130,4 @@ const CourseEditor = () => {
   );
 };
 
-export default CourseEditor;
+export default AddCourse;

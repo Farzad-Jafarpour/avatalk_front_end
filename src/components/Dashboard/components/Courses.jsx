@@ -1,7 +1,8 @@
 import React from "react";
-import { Box, Link, Grid } from "@mui/material";
+import { Box, Link, Grid, Button } from "@mui/material";
 import ImgMediaCard from "common/card";
 import GridRenderer from "./GridRenderer";
+import { Add } from "@mui/icons-material";
 
 const Courses = () => {
   return (
@@ -15,22 +16,39 @@ const Courses = () => {
         height: "90vh",
       }}
     >
-      <Box
-        sx={{
-          background: "#1976d2",
-          textAlign: "center",
-          borderRadius: "0px 10px 0px 10px ",
-          width: "120px",
-        }}
-      >
-        <Link
-          href="/courselists"
-          variant="body2"
-          underline="hover"
-          color="#fff"
+      <Box display="flex">
+        <Box
+          sx={{
+            background: "#1976d2",
+            textAlign: "center",
+            borderRadius: "0px 10px 0px 10px ",
+            width: "120px",
+          }}
         >
-          Course lists
-        </Link>
+          <Link
+            href="/courselists"
+            variant="body2"
+            underline="hover"
+            color="#fff"
+          >
+            Course lists
+          </Link>
+        </Box>
+        <Box>
+          <Button
+            href="/addcourse"
+            variant="contained"
+            sx={{
+              background: "#1976d2",
+              textAlign: "center",
+              borderRadius: " 10px 0px 10px 0px ",
+              ml: "3px",
+              width: "120px",
+            }}
+          >
+            <Add label="Chip 1" color="#000" />
+          </Button>
+        </Box>
       </Box>
       <Box
         display="flex"

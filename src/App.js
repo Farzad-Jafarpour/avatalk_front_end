@@ -15,7 +15,7 @@ import HomePage from "./common/homePage/homePage";
 import "react-toastify/dist/ReactToastify.css";
 
 import "./App.css";
-import CourseEditor from "common/homePage/CourseEditor";
+import AddCourse from "common/homePage/AddCourse";
 
 const theme = createTheme();
 const App = () => {
@@ -42,7 +42,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/homepage" element={<HomePage />} />
-          <Route path="/courseedit" element={<CourseEditor />} />
+          <Route path="/addcourse" element={<AddCourse />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </React.Fragment>
