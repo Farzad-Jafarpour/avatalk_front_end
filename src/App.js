@@ -11,9 +11,9 @@ import Home from "./components/home";
 import Classroom from "./components/classroom";
 import ClassesNew from "./components/classesNew";
 import AddUser from "./components/addUser";
-import HomePage from "./common/homePage/homePage";
-import AddCourse from "common/homePage/AddCourse";
-import EditCourse from "common/homePage/EditCourse";
+import HomePage from "components/homePage/homePage";
+import AddCourse from "components/homePage/components/AddCourse";
+import EditCourse from "components/homePage/components/EditCourse";
 import "react-toastify/dist/ReactToastify.css";
 
 import "./App.css";

@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import http from "services/httpService";
 import { useForm } from "react-hook-form";
 import { TextField, Button, Container, Paper, Grid, Box } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import FilesDragAndDrop from "common/FilesDragAndDrop";
-import { ResetTv } from "@mui/icons-material";
 
 const EditCourse = () => {
   const [oldCardData, setOldCardData] = useState({});

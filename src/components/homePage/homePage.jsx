@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, Grid } from "@mui/material";
-import AdminRenderer from "../../components/Dashboard/components/AdminList";
-import CarouselRenderer from "../../components/Dashboard/components/Carousel";
-import Courses from "../../components/Dashboard/components/Courses";
+import AdminRenderer from "../Dashboard/components/AdminList";
+import CarouselRenderer from "../Dashboard/components/Carousel";
+import Courses from "../Dashboard/components/Courses";
 
 const HomePage = () => {
   return (

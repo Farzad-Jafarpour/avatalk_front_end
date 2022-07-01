@@ -73,6 +73,7 @@ const Courses = () => {
           {cards.map((card) =>
             GridRenderer(
               <ImgMediaCard
+                key={card.name}
                 id={card._id}
                 cardName={card.name}
                 cardImage={card.cardImage}
