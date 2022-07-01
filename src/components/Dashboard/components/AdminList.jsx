@@ -38,8 +38,11 @@ const AdminRenderer = () => {
           m: 1,
         }}
       >
+        {" "}
+        admins
+        {/* {GridRenderer(ImgMediaCard)}
         {GridRenderer(ImgMediaCard)}
-        {GridRenderer(ImgMediaCard)}
+        {GridRenderer(ImgMediaCard)} */}
       </Box>
     </Box>
   );

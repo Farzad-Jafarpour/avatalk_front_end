@@ -16,7 +16,7 @@ const CarouselRenderer = () => {
     >
       <Carousel sx={{ height: "100%", width: "100%" }}>
         {CarouselData.map((item) => (
-          <Box sx={{ height: "100%", width: "100%" }}>
+          <Box key={item.image} sx={{ height: "100%", width: "100%" }}>
             <img
               style={{
                 height: "90%",

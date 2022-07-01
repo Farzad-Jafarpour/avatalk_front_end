@@ -12,10 +12,11 @@ import Classroom from "./components/classroom";
 import ClassesNew from "./components/classesNew";
 import AddUser from "./components/addUser";
 import HomePage from "./common/homePage/homePage";
+import AddCourse from "common/homePage/AddCourse";
+import EditCourse from "common/homePage/EditCourse";
 import "react-toastify/dist/ReactToastify.css";
 
 import "./App.css";
-import AddCourse from "common/homePage/AddCourse";
 
 const theme = createTheme();
 const App = () => {
@@ -42,7 +43,8 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/homepage" element={<HomePage />} />
-          <Route path="/addcourse" element={<AddCourse />} />
+          <Route path="/addcourse/" element={<AddCourse />} />
+          <Route path="/editcourse/:id" element={<EditCourse />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </React.Fragment>

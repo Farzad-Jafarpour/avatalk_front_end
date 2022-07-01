@@ -1,14 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import http from "services/httpService";
 import { useForm } from "react-hook-form";
 import { TextField, Button, Container, Paper, Grid, Box } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import FilesDragAndDrop from "common/FilesDragAndDrop";
+import { ResetTv } from "@mui/icons-material";
 
-const AddCourse = () => {
+const EditCourse = () => {
+  const [oldCardData, setOldCardData] = useState({});
   const [cardImage, setCardImage] = useState();
   const { register, handleSubmit, reset } = useForm();
+
+  const params = useParams();
+  const getOldData = async () => {
+    const response = await http.get(
+      "http://localhost:3900/api/cards/" + params.id
+    );
+    setOldCardData(response.data);
+  };
+  getOldData();
 
   const handleUploadUserImage = async (image) => {
     const formData = new FormData();
@@ -27,12 +39,15 @@ const AddCourse = () => {
   };
 
   const onSubmit = async (data) => {
+    console.log(data.cardName, cardImage);
     let card = {
-      cardImage: cardImage,
-      name: data.cardName,
-      description: data.cardDescription,
+      cardImage: cardImage || oldCardData.cardImage,
+      name: data.cardName || oldCardData.name,
+      description: data.cardDescription || oldCardData.description,
     };
-    await http.post("http://localhost:3900/api/cards", card);
+    console.log("1", card);
+
+    await http.put("http://localhost:3900/api/cards/" + params.id, card);
     window.location = "/homepage";
   };
   return (
@@ -134,4 +149,4 @@ const AddCourse = () => {
   );
 };
 
-export default AddCourse;
+export default EditCourse;

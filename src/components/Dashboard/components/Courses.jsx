@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Link, Grid, Button } from "@mui/material";
 import ImgMediaCard from "common/card";
 import GridRenderer from "./GridRenderer";
 import { Add } from "@mui/icons-material";
+import http from "services/httpService";
 
 const Courses = () => {
+  const [cards, setCards] = useState([]);
+
+  useEffect(async () => {
+    const cardsData = await http.get("http://localhost:3900/api/cards");
+    setCards(cardsData.data);
+  }, [cards]);
+  if (cards.length === 0) return null;
   return (
     <Box
       sx={{
@@ -30,6 +38,7 @@ const Courses = () => {
             variant="body2"
             underline="hover"
             color="#fff"
+            sx={{ textAlign: "center", mt: 1 }}
           >
             Course lists
           </Link>
@@ -43,6 +52,7 @@ const Courses = () => {
               textAlign: "center",
               borderRadius: " 10px 0px 10px 0px ",
               ml: "3px",
+              p: 0,
               width: "120px",
             }}
           >
@@ -59,13 +69,19 @@ const Courses = () => {
           alignItems: "stretch",
         }}
       >
-        <Grid container>
-          {GridRenderer(ImgMediaCard, 4, 4)}
-          {GridRenderer(ImgMediaCard, 4, 4)}
-          {GridRenderer(ImgMediaCard, 4, 4)}
-          {GridRenderer(ImgMediaCard, 4, 4)}
-          {GridRenderer(ImgMediaCard, 4, 4)}
-          {GridRenderer(ImgMediaCard, 4, 4)}
+        <Grid container spacing={0.25}>
+          {cards.map((card) =>
+            GridRenderer(
+              <ImgMediaCard
+                id={card._id}
+                cardName={card.name}
+                cardImage={card.cardImage}
+                cardDescription={card.description}
+              />,
+              4,
+              4
+            )
+          )}
         </Grid>
       </Box>
     </Box>

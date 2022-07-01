@@ -7,11 +7,11 @@ import Courses from "../../components/Dashboard/components/Courses";
 const HomePage = () => {
   return (
     <>
-      <Grid container justifyContent="center" sx={{ width: "78vw" }}>
+      <Grid container justifyContent="center">
         <Grid item xs={12} md={8}>
           <Courses />
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={4} lg={4}>
           <Box
             sx={{
               mt: { xs: 10, md: 0 },
