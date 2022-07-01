@@ -12,7 +12,7 @@ const SecondaryListItems = ({ user }) => {
     <React.Fragment>
       {!user && (
         <>
-          <Link href="/signup">
+          <Link href="/signup" underline="hover" color="#212529">
             <ListItemButton>
               <ListItemIcon>
                 <AssignmentInd />
@@ -20,7 +20,7 @@ const SecondaryListItems = ({ user }) => {
               <ListItemText primary="Sign Up" />
             </ListItemButton>
           </Link>
-          <Link href="/login" variant="body2">
+          <Link href="/login" variant="body2" underline="hover" color="#212529">
             <ListItemButton>
               <ListItemIcon>
                 <Login />

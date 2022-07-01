@@ -3,8 +3,8 @@ import { Grid } from "@mui/material";
 
 const GridRenderer = (Item, md, xs) => {
   return (
-    <Grid item md={md} xs={xs} sx={{ p: 0.25 }}>
-      <Item />
+    <Grid item key={Item.key} md={md} xs={xs}>
+      {Item}
     </Grid>
   );
 };
