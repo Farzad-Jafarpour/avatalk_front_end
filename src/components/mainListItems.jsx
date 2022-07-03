@@ -5,14 +5,9 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
+import HomeWorkRoundedIcon from "@mui/icons-material/HomeWorkRounded";
 
-import {
-  People,
-  BarChart,
-  Layers,
-  Home,
-  NaturePeopleTwoTone,
-} from "@mui/icons-material";
+import { Home, NaturePeopleTwoTone } from "@mui/icons-material";
 
 const MainListItems = () => {
   return (
@@ -33,24 +28,14 @@ const MainListItems = () => {
           <ListItemText primary="Users" />
         </ListItemButton>
       </Link>
-      <ListItemButton>
-        <ListItemIcon>
-          <People />
-        </ListItemIcon>
-        <ListItemText primary="Customers" />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemIcon>
-          <BarChart />
-        </ListItemIcon>
-        <ListItemText primary="Reports" />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemIcon>
-          <Layers />
-        </ListItemIcon>
-        <ListItemText primary="Integrations" />
-      </ListItemButton>
+      <Link href="/homepage" underline="hover" color="#212529">
+        <ListItemButton>
+          <ListItemIcon>
+            <HomeWorkRoundedIcon />
+          </ListItemIcon>
+          <ListItemText primary="Client Home Page" />
+        </ListItemButton>
+      </Link>
     </React.Fragment>
   );
 };

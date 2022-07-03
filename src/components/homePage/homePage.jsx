@@ -3,11 +3,13 @@ import { Box, Grid } from "@mui/material";
 import AdminRenderer from "../Dashboard/components/AdminList";
 import CarouselRenderer from "../Dashboard/components/Carousel";
 import Courses from "../Dashboard/components/Courses";
+import Appbar from "components/homePage/components/Appbar";
 
 const HomePage = () => {
   return (
     <>
-      <Grid container justifyContent="center">
+      <Appbar />
+      <Grid container justifyContent="center" sx={{ mt: "40px" }}>
         <Grid item xs={12} md={8}>
           <Courses />
         </Grid>
