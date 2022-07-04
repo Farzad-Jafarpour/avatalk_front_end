@@ -37,7 +37,7 @@ const ImgMediaCard = ({ cardName, cardImage, cardDescription, id }) => {
         </CardContent>
         <CardActions sx={{ m: 0, p: "2px" }}>
           <Button onClick={handleModal} size="small">
-            Learn More
+            Details
           </Button>
           {user && user.isAdmin && (
             <Button href={`/editcourse/${id}`} size="small">
