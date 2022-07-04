@@ -27,7 +27,7 @@ const ImgMediaCard = ({ cardName, cardImage, cardDescription, id }) => {
       <Card>
         <CardMedia
           component="img"
-          alt="green iguana"
+          alt={cardName}
           image={apiEndPoint + cardImage}
         />
         <CardContent sx={{ m: 0, p: "2px" }}>
