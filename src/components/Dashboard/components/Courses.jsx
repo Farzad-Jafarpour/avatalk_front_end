@@ -1,24 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { Box, Link, Grid, Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import ImgMediaCard from "common/card";
+import ImgMediaCard from "components/homePage/components/card";
 import GridRenderer from "./GridRenderer";
 import { Add } from "@mui/icons-material";
 import http from "services/httpService";
 
-const useStyles = makeStyles((theme) => ({
-  customHover: {
+const styles = {
+  btn: {
+    background: "#1976d2",
+    textAlign: "center",
+    borderRadius: " 0px 10px 0px 10px  ",
+    ml: "3px",
+    p: 0,
+    width: "120px",
     "&:hover": {
       color: "#adc3f7",
       backgroundColor: "#fc5d5d",
       borderRadius: " 10px 0px 10px 0px ",
     },
   },
-}));
+};
 
 const Courses = () => {
-  const classes = useStyles();
-
   const [cards, setCards] = useState([]);
 
   useEffect(async () => {
@@ -39,36 +43,12 @@ const Courses = () => {
     >
       <Box display="flex">
         <Box>
-          <Button
-            className={classes.customHover}
-            href="/addcourse"
-            variant="contained"
-            sx={{
-              background: "#1976d2",
-              textAlign: "center",
-              borderRadius: " 0px 10px 0px 10px  ",
-              ml: "3px",
-              p: 0,
-              width: "120px",
-            }}
-          >
+          <Button href="/addcourse" variant="contained" sx={styles.btn}>
             Courses
           </Button>
         </Box>
         <Box>
-          <Button
-            className={classes.customHover}
-            href="/addcourse"
-            variant="contained"
-            sx={{
-              background: "#1976d2",
-              textAlign: "center",
-              borderRadius: " 0px 10px 0px 10px  ",
-              ml: "3px",
-              p: 0,
-              width: "120px",
-            }}
-          >
+          <Button href="/addcourse" variant="contained" sx={styles.btn}>
             <Add label="Chip 1" color="#000" />
           </Button>
         </Box>
@@ -82,7 +62,7 @@ const Courses = () => {
           alignItems: "stretch",
         }}
       >
-        <Grid container spacing={0.25}>
+        <Grid container>
           {cards.map((card) =>
             GridRenderer(
               <ImgMediaCard

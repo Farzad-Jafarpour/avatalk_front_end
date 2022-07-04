@@ -12,6 +12,7 @@ const EditCourse = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const params = useParams();
+
   const getOldData = async () => {
     const response = await http.get(
       "http://localhost:3900/api/cards/" + params.id
