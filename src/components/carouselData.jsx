@@ -2,8 +2,7 @@
 
 export const CarouselData = [
   {
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png",
+    image: "http://localhost:3900/files/2022-06-24T12-52-49.496Zsample-1.jpg",
   },
   {
     image:

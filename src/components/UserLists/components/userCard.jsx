@@ -9,10 +9,6 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 const styles = {
   cardContainer: {
@@ -33,7 +29,7 @@ const styles = {
     borderRadius: " 10px  ",
     ml: "3px",
     p: 0,
-    width: "120px",
+    width: "70px",
     "&:hover": {
       color: "#adc3f7",
       backgroundColor: "#fc5d5d",
@@ -41,12 +37,22 @@ const styles = {
   },
 };
 
-export default function UserCard() {
+const UserCard = ({ userName, student, admin, teacher }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState("");
+  const [isStudent, setIsStudent] = useState("");
+  const [isTeacher, setIsTeacher] = useState("");
+
+  useEffect(() => {
+    if (student) setIsStudent("Student");
+    if (admin) setIsAdmin("Admin");
+    if (teacher) setIsTeacher("Teacher");
+  }, []);
 
   const handleModal = () => {
     setModalOpen(!modalOpen);
   };
+
   return (
     <>
       <Card sx={styles.cardContainer}>
@@ -57,29 +63,26 @@ export default function UserCard() {
             alignItems: "center",
           }}
         >
-          <CardHeader
-            avatar={
-              <Avatar
-                src="http://localhost:3900/files/2022-07-01T11-21-06.075Ztest%20-%20Copy.jpg"
-                sx={{ bgcolor: red[500] }}
-                aria-label="recipe"
-              />
-            }
-            title="Farzad Jafarpour"
+          <CardMedia
+            component="img"
+            alt={userName}
+            image="http://localhost:3900/files/2022-07-01T11-21-06.075Ztest%20-%20Copy.jpg"
           />
-          <CardContent>
+          <CardActions>
             <Button onClick={handleModal} sx={styles.btn}>
               Details
             </Button>
-          </CardContent>
+          </CardActions>
         </Box>
       </Card>
       <Dialog open={modalOpen} onClose={handleModal}>
-        <DialogTitle>Course details</DialogTitle>
+        <DialogTitle>{`${userName}'s details`}</DialogTitle>
         <DialogContent>
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              Asgar
+              {`${isAdmin}
+              ${isTeacher}
+              ${isStudent}`}
             </Typography>
           </CardContent>
           <Button onClick={handleModal} size="small">
@@ -89,4 +92,6 @@ export default function UserCard() {
       </Dialog>
     </>
   );
-}
+};
+
+export default UserCard;

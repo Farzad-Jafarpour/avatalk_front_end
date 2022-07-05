@@ -52,7 +52,7 @@ function DashboardContent() {
                 </Grid>
               </Grid>
             </Box>
-            <Copyright sx={{ m: 1 }} companyname="Avatalk" />
+            <Copyright sx={{ m: 1 }} companyname="Company" />
           </Container>
         </Box>
       </Box>

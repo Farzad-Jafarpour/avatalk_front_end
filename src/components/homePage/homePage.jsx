@@ -9,21 +9,27 @@ const HomePage = () => {
   return (
     <>
       <Appbar />
-      <Grid container justifyContent="center" sx={{ mt: "40px" }}>
+      <Grid container sx={{ mt: "40px" }}>
         <Grid item xs={12} md={8}>
           <Courses />
         </Grid>
         <Grid item xs={12} md={4} lg={4}>
-          <Box
+          <Grid
+            container
             sx={{
               mt: { xs: 10, md: 0 },
+
+              justifyContent: "center",
             }}
+            spacing={0.5}
           >
-            <AdminRenderer />
-            <Box>
+            <Grid item>
+              <AdminRenderer />
+            </Grid>
+            <Grid item>
               <CarouselRenderer />
-            </Box>
-          </Box>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </>

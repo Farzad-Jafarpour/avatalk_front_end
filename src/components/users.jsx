@@ -46,7 +46,7 @@ const Users = () => {
           <UserTable columns={columns} data={users} />
         </Box>
       </Box>
-      <Copyright sx={{ pt: 4 }} companyname="Avatalk" />
+      <Copyright sx={{ pt: 4 }} companyname="Company" />
     </>
   );
 };

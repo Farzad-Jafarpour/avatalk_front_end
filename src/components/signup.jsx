@@ -141,7 +141,7 @@ export default function SignUp() {
               </Grid>
             </Box>
           </Box>
-          <Copyright sx={{ mt: 5 }} companyname="Avatalk" />
+          <Copyright sx={{ mt: 5 }} companyname="Company" />
         </Container>
       </form>
     </Grid>
