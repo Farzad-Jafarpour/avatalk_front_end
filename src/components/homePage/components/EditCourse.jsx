@@ -12,6 +12,7 @@ const EditCourse = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const params = useParams();
+
   const getOldData = async () => {
     const response = await http.get(
       "http://localhost:3900/api/cards/" + params.id
@@ -43,7 +44,6 @@ const EditCourse = () => {
       name: data.cardName || oldCardData.name,
       description: data.cardDescription || oldCardData.description,
     };
-    console.log("1", card);
 
     await http.put("http://localhost:3900/api/cards/" + params.id, card);
     window.location = "/homepage";

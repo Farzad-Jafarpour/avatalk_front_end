@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, makeStyles, Paper } from "@mui/material";
 import AdminRenderer from "../Dashboard/components/AdminList";
 import CarouselRenderer from "../Dashboard/components/Carousel";
 import Courses from "../Dashboard/components/Courses";
@@ -9,23 +9,29 @@ const HomePage = () => {
   return (
     <>
       <Appbar />
-      <Grid container justifyContent="center" sx={{ mt: "40px" }}>
-        <Grid item xs={12} md={8}>
-          <Courses />
+      <Paper sx={{ background: "#E5E1E1", p: 0 }}>
+        <Grid container sx={{ mt: "40px", maxWidth: "lg" }} spacing={1}>
+          <Grid item xs={12} md={8}>
+            <Courses />
+          </Grid>
+          <Grid item xs={12} md={4} lg={4}>
+            <Grid
+              container
+              sx={{
+                justifyContent: "center",
+              }}
+              spacing={0.25}
+            >
+              <Grid item>
+                <AdminRenderer />
+              </Grid>
+              <Grid item>
+                <CarouselRenderer />
+              </Grid>
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item xs={12} md={4} lg={4}>
-          <Box
-            sx={{
-              mt: { xs: 10, md: 0 },
-            }}
-          >
-            <AdminRenderer />
-            <Box>
-              <CarouselRenderer />
-            </Box>
-          </Box>
-        </Grid>
-      </Grid>
+      </Paper>
     </>
   );
 };

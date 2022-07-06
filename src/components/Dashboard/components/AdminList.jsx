@@ -1,13 +1,15 @@
-import React from "react";
-import { Box, Link } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Box, Link, Grid, Paper } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import ImgMediaCard from "common/card";
+import ImgMediaCard from "components/homePage/components/card";
 import GridRenderer from "./GridRenderer";
+import UserCard from "components/UserLists/components/userCard";
+import userService from "services/userService";
 
 const useStyles = makeStyles((theme) => ({
   customHover: {
     "&:hover": {
-      color: "#000",
+      color: "#adc3f7",
       backgroundColor: "#fc5d5d",
       borderRadius: " 10px 0px 10px 0px ",
     },
@@ -16,47 +18,50 @@ const useStyles = makeStyles((theme) => ({
 
 const AdminRenderer = () => {
   const classes = useStyles();
+  const [users, setUsers] = useState([]);
+
+  useEffect(async () => {
+    // if (!user) return;
+    const users = await userService.getUsers();
+
+    if (users) {
+      setUsers(
+        users.data.filter((user) => {
+          return users.data.indexOf(user) < 4;
+        })
+      );
+    }
+  }, [users]);
+
+  if (users.length === 0) return null;
 
   return (
     <Box
       display="flex"
+      overflow={"hidden"}
       sx={{
+        width: { xs: "250px", sm: "250px", md: "250px", lg: "400px" },
         flexGrow: 1,
         flexDirection: "column",
         justifyContent: "center",
         m: 1,
-        height: { md: "49vh", xs: "33vh" },
       }}
     >
-      <Box
-        className={classes.customHover}
-        sx={{
-          background: "#1976d2",
-          textAlign: "center",
-          borderRadius: " 0px 10px 0px 10px ",
-          width: "120px",
-          mt: 1,
-        }}
-      >
-        <Link href="/admins" variant="body2" underline="none" color="#fff">
-          Admins
-        </Link>
-      </Box>
-      <Box
-        display="flex"
-        sx={{
-          flexGrow: 1,
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          m: 1,
-        }}
-      >
-        admins
-        {/* {GridRenderer(ImgMediaCard)}
-        {GridRenderer(ImgMediaCard)}
-        {GridRenderer(ImgMediaCard)} */}
-      </Box>
+      <Grid container spacing={1}>
+        {users.map((user) =>
+          GridRenderer(
+            <UserCard
+              userName={user.name + " " + user.lastName}
+              admin={user.isAdmin}
+              teacher={user.isTeacher}
+              student={user.isStudent}
+              key={user.nationalCode}
+            />,
+            6,
+            6
+          )
+        )}
+      </Grid>
     </Box>
   );
 };
