@@ -38,48 +38,30 @@ const AdminRenderer = () => {
   return (
     <Box
       display="flex"
+      overflow={"hidden"}
       sx={{
+        width: { xs: "250px", sm: "250px", md: "250px", lg: "400px" },
         flexGrow: 1,
         flexDirection: "column",
         justifyContent: "center",
-        m: 4,
-        height: { md: "49vh", xs: "33vh" },
+        m: 1,
       }}
     >
-      <Paper
-        sx={{
-          backgroundColor: "#FA8888",
-          width: { sm: "150px", md: "250px" },
-          height: { sm: "150px", md: "250px" },
-        }}
-      >
-        <Box
-          display="flex"
-          sx={{
-            flexGrow: 1,
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-            m: 1,
-          }}
-        >
-          <Grid container spacing={0.25}>
-            {users.map((user) =>
-              GridRenderer(
-                <UserCard
-                  userName={user.name + " " + user.lastName}
-                  admin={user.isAdmin}
-                  teacher={user.isTeacher}
-                  student={user.isStudent}
-                  key={user.nationalCode}
-                />,
-                6,
-                4
-              )
-            )}
-          </Grid>
-        </Box>
-      </Paper>
+      <Grid container spacing={1}>
+        {users.map((user) =>
+          GridRenderer(
+            <UserCard
+              userName={user.name + " " + user.lastName}
+              admin={user.isAdmin}
+              teacher={user.isTeacher}
+              student={user.isStudent}
+              key={user.nationalCode}
+            />,
+            6,
+            6
+          )
+        )}
+      </Grid>
     </Box>
   );
 };

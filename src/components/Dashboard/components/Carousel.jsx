@@ -11,31 +11,20 @@ const CarouselRenderer = () => {
         justifyContent: "center",
         alignItems: "center",
         m: 1,
-        height: "49vh",
       }}
     >
-      <Paper
+      <Carousel
         sx={{
-          background: "#F6DBDB",
-          width: { sm: "150px", md: "250px" },
-          height: { sm: "150px", md: "250px" },
+          width: { xs: "250px", sm: "250px", md: "250px", lg: "400px" },
+          maxHeight: { sm: "190px" },
         }}
       >
-        <Carousel sx={{ height: "100%", width: "100%" }}>
-          {CarouselData.map((item) => (
-            <Box key={item.image} sx={{ height: "100%", width: "100%" }}>
-              <img
-                style={{
-                  height: "90%",
-                  width: "90%",
-                  objectFit: "fill",
-                }}
-                src={item.image}
-              />
-            </Box>
-          ))}
-        </Carousel>
-      </Paper>
+        {CarouselData.map((item) => (
+          <Box key={item.image}>
+            <img src={item.image} />
+          </Box>
+        ))}
+      </Carousel>
     </Box>
   );
 };

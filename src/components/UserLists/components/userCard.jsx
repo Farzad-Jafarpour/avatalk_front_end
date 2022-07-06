@@ -12,18 +12,17 @@ import { red } from "@mui/material/colors";
 
 const styles = {
   cardContainer: {
-    width: "xs",
+    maxWidth: "180px",
     borderRadius: "10px",
     color: "#FD4F4F",
     "&:hover": {
       color: "#000",
-      backgroundColor: "#FCEEEE",
+      backgroundColor: "#000",
       borderRadius: "40px",
     },
   },
 
   btn: {
-    background: "#1976d2",
     textAlign: "center",
     color: "#fff",
     borderRadius: " 10px  ",
@@ -66,7 +65,7 @@ const UserCard = ({ userName, student, admin, teacher }) => {
           <CardMedia
             component="img"
             alt={userName}
-            image="http://localhost:3900/files/2022-07-01T11-21-06.075Ztest%20-%20Copy.jpg"
+            image="http://localhost:3900/files/usercard.jpg"
           />
           <CardActions>
             <Button onClick={handleModal} sx={styles.btn}>

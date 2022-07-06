@@ -6,6 +6,7 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  Paper,
 } from "@mui/material";
 import { Dialog, DialogContent, DialogTitle } from "@mui/material";
 import auth from "services/authService";
@@ -27,34 +28,34 @@ const ImgMediaCard = ({ cardName, cardImage, cardDescription, id }) => {
   return (
     <>
       <Card>
-        <CardMedia
-          component="img"
-          alt={cardName}
-          image={apiEndPoint + cardImage}
-        />
-        <CardContent sx={{ m: 0, p: "2px" }}>
-          <Typography gutterBottom variant="h6" component="div">
-            {cardName}
-          </Typography>
-        </CardContent>
-        <CardActions sx={{ m: 0, p: "2px" }}>
-          <Button onClick={handleModal} size="small">
-            Details
-          </Button>
-          {user && user.isAdmin && (
-            <Button href={`/editcourse/${id}`} size="small">
-              Edit
-            </Button>
-          )}
-        </CardActions>
-      </Card>
-      <Dialog open={modalOpen} onClose={handleModal}>
-        <DialogTitle>Course details</DialogTitle>
-        <DialogContent>
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+        <Paper>
+          <CardMedia
+            sx={{ maxWidth: "255px", maxHeight: "150px" }}
+            component="img"
+            alt={cardName}
+            image={apiEndPoint + cardImage}
+          />
+          <CardContent sx={{ m: 0, p: "2px" }}>
+            <Typography gutterBottom variant="h6" component="div">
               {cardName}
             </Typography>
+          </CardContent>
+          <CardActions sx={{ m: 0, p: "2px" }}>
+            <Button onClick={handleModal} size="small">
+              Details
+            </Button>
+            {user && user.isAdmin && (
+              <Button href={`/editcourse/${id}`} size="small">
+                Edit
+              </Button>
+            )}
+          </CardActions>
+        </Paper>
+      </Card>
+      <Dialog open={modalOpen} onClose={handleModal}>
+        <DialogTitle>{cardName} details</DialogTitle>
+        <DialogContent>
+          <CardContent>
             <Typography variant="body2" color="text.secondary">
               {cardDescription}
             </Typography>

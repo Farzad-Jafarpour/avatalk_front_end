@@ -44,7 +44,6 @@ const EditCourse = () => {
       name: data.cardName || oldCardData.name,
       description: data.cardDescription || oldCardData.description,
     };
-    console.log("1", card);
 
     await http.put("http://localhost:3900/api/cards/" + params.id, card);
     window.location = "/homepage";

@@ -6,6 +6,7 @@ import Courses from "./components/Courses";
 import CarouselRenderer from "./components/Carousel";
 import AdminRenderer from "./components/AdminList";
 
+const drawerWidth = 240;
 function DashboardContent() {
   return (
     <>
@@ -34,7 +35,7 @@ function DashboardContent() {
               }}
             >
               <MiniDrawer />
-              <Grid container justifyContent="center">
+              <Grid container sx={{ ml: 10 }} justifyContent="center">
                 <Grid item xs={12} md={9}>
                   <Courses />
                 </Grid>

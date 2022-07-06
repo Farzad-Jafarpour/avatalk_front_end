@@ -36,54 +36,47 @@ const Courses = () => {
         display: "flex",
         flexDirection: "column",
         flex: 1,
-        m: 1,
-        p: 2,
-        height: "90vh",
+        m: "8px",
+        p: "3px",
       }}
     >
-      <Paper
+      <Box sx={{ display: "flex" }}>
+        <Box>
+          <Button variant="contained" sx={styles.btn}>
+            Courses
+          </Button>
+        </Box>
+        <Box>
+          <Button href="/addcourse" variant="contained" sx={styles.btn}>
+            <Add label="Chip 1" color="#000" />
+          </Button>
+        </Box>
+      </Box>
+      <Box
+        display="flex"
         sx={{
-          background: "#F6DBDB",
+          flex: 1,
+          justifyContent: "center",
+          mt: 1,
+          alignItems: "stretch",
         }}
       >
-        <Box display="flex">
-          <Box>
-            <Button href="/addcourse" variant="contained" sx={styles.btn}>
-              Courses
-            </Button>
-          </Box>
-          <Box>
-            <Button href="/addcourse" variant="contained" sx={styles.btn}>
-              <Add label="Chip 1" color="#000" />
-            </Button>
-          </Box>
-        </Box>
-        <Box
-          display="flex"
-          sx={{
-            flex: 1,
-            justifyContent: "center",
-            mt: 1,
-            alignItems: "stretch",
-          }}
-        >
-          <Grid container spacing={0.25}>
-            {cards.map((card) =>
-              GridRenderer(
-                <ImgMediaCard
-                  key={card.name}
-                  id={card._id}
-                  cardName={card.name}
-                  cardImage={card.cardImage}
-                  cardDescription={card.description}
-                />,
-                4,
-                4
-              )
-            )}
-          </Grid>
-        </Box>
-      </Paper>
+        <Grid container spacing={0.25}>
+          {cards.map((card) =>
+            GridRenderer(
+              <ImgMediaCard
+                key={card.name}
+                id={card._id}
+                cardName={card.name}
+                cardImage={card.cardImage}
+                cardDescription={card.description}
+              />,
+              4,
+              4
+            )
+          )}
+        </Grid>
+      </Box>
     </Box>
   );
 };
