@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Dialog, DialogContent, DialogTitle } from "@mui/material";
-import { Card, Button, Box, Paper } from "@mui/material";
-import CardHeader from "@mui/material/CardHeader";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
+import {
+  Card,
+  Button,
+  Box,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Typography,
+} from "@mui/material";
+
+import "animate.css";
 
 const styles = {
   cardContainer: {
@@ -19,6 +23,8 @@ const styles = {
       color: "#000",
       backgroundColor: "#000",
       borderRadius: "40px",
+      transform: "scale(1.1)",
+      opacity: 0.7,
     },
   },
 
@@ -32,6 +38,8 @@ const styles = {
     "&:hover": {
       color: "#adc3f7",
       backgroundColor: "#fc5d5d",
+      transform: "scale(1.2)",
+      opacity: 1,
     },
   },
 };
@@ -46,7 +54,7 @@ const UserCard = ({ userName, student, admin, teacher }) => {
     if (student) setIsStudent("Student");
     if (admin) setIsAdmin("Admin");
     if (teacher) setIsTeacher("Teacher");
-  }, []);
+  });
 
   const handleModal = () => {
     setModalOpen(!modalOpen);
@@ -54,7 +62,10 @@ const UserCard = ({ userName, student, admin, teacher }) => {
 
   return (
     <>
-      <Card sx={styles.cardContainer}>
+      <Card
+        className="animate__animated animate__backInRight animate__delay-1s"
+        sx={styles.cardContainer}
+      >
         <Box
           sx={{
             display: "flex",
@@ -74,7 +85,11 @@ const UserCard = ({ userName, student, admin, teacher }) => {
           </CardActions>
         </Box>
       </Card>
-      <Dialog open={modalOpen} onClose={handleModal}>
+      <Dialog
+        className="animate__animated animate__backInDown"
+        open={modalOpen}
+        onClose={handleModal}
+      >
         <DialogTitle>{`${userName}'s details`}</DialogTitle>
         <DialogContent>
           <CardContent>

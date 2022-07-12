@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid } from "@mui/material";
+import "animate.css";
 
 const GridRenderer = (Item, md, xs) => {
   return (

@@ -1,27 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Box, Link, Grid, Paper } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import ImgMediaCard from "components/homePage/components/card";
+import { Box, Grid } from "@mui/material";
 import GridRenderer from "./GridRenderer";
 import UserCard from "components/UserLists/components/userCard";
 import userService from "services/userService";
 
-const useStyles = makeStyles((theme) => ({
-  customHover: {
-    "&:hover": {
-      color: "#adc3f7",
-      backgroundColor: "#fc5d5d",
-      borderRadius: " 10px 0px 10px 0px ",
-    },
-  },
-}));
-
 const AdminRenderer = () => {
-  const classes = useStyles();
   const [users, setUsers] = useState([]);
 
   useEffect(async () => {
-    // if (!user) return;
     const users = await userService.getUsers();
 
     if (users) {

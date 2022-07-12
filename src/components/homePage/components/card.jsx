@@ -7,14 +7,18 @@ import {
   CardContent,
   CardMedia,
   Paper,
+  Dialog,
+  DialogContent,
+  DialogTitle,
 } from "@mui/material";
-import { Dialog, DialogContent, DialogTitle } from "@mui/material";
 import auth from "services/authService";
+import "animate.css";
 
 const apiEndPoint = "http://localhost:3900/";
 
 const ImgMediaCard = ({ cardName, cardImage, cardDescription, id }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -25,9 +29,10 @@ const ImgMediaCard = ({ cardName, cardImage, cardDescription, id }) => {
   const handleModal = () => {
     setModalOpen(!modalOpen);
   };
+
   return (
     <>
-      <Card>
+      <Card className="animate__animated animate__backInLeft animate__delay-1s">
         <Paper>
           <CardMedia
             sx={{ maxWidth: "255px", maxHeight: "150px" }}
@@ -35,13 +40,32 @@ const ImgMediaCard = ({ cardName, cardImage, cardDescription, id }) => {
             alt={cardName}
             image={apiEndPoint + cardImage}
           />
-          <CardContent sx={{ m: 0, p: "2px" }}>
+          <CardContent
+            className="animate__animated animate__backInDown animate__delay-2s"
+            sx={{ m: 0, p: "2px" }}
+          >
             <Typography gutterBottom variant="h6" component="div">
               {cardName}
             </Typography>
           </CardContent>
-          <CardActions sx={{ m: 0, p: "2px" }}>
-            <Button onClick={handleModal} size="small">
+          <CardActions
+            className="animate__animated animate__backInUp animate__delay-2s"
+            sx={{ m: 0, p: "2px" }}
+          >
+            <Button
+              onClick={handleModal}
+              onMouseOver={() => {
+                setIsHovered(!isHovered);
+              }}
+              onMouseOut={() => {
+                setIsHovered(!isHovered);
+              }}
+              className={
+                isHovered &&
+                "animate__animated animate__infinite animate__swing"
+              }
+              size="small"
+            >
               Details
             </Button>
             {user && user.isAdmin && (
@@ -52,7 +76,12 @@ const ImgMediaCard = ({ cardName, cardImage, cardDescription, id }) => {
           </CardActions>
         </Paper>
       </Card>
-      <Dialog open={modalOpen} onClose={handleModal}>
+
+      <Dialog
+        className="animate__animated animate__backInDown"
+        open={modalOpen}
+        onClose={handleModal}
+      >
         <DialogTitle>{cardName} details</DialogTitle>
         <DialogContent>
           <CardContent>

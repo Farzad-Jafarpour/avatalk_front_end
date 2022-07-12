@@ -1,6 +1,6 @@
 import React from "react";
-import { Box, Button, Grid, AppBar, Toolbar } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import { Button, AppBar, Toolbar } from "@mui/material";
+import "animate.css";
 
 const styles = {
   btn: {
@@ -14,6 +14,8 @@ const styles = {
       color: "#adc3f7",
       backgroundColor: "#fc5d5d",
       borderRadius: " 10px 0px 10px 0px ",
+      transform: "scale(1.2)",
+      opacity: 0.8,
     },
   },
 };
@@ -22,7 +24,12 @@ const Appbar = () => {
     <>
       <AppBar position="fixed">
         <Toolbar variant="dense">
-          <Button href="/" variant="outlined" sx={styles.btn}>
+          <Button
+            className="animate__animated animate__bounce"
+            href="/"
+            variant="outlined"
+            sx={styles.btn}
+          >
             Home
           </Button>
         </Toolbar>

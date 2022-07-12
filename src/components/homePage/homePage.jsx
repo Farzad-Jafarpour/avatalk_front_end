@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, makeStyles, Paper } from "@mui/material";
+import { Grid, Paper } from "@mui/material";
 import AdminRenderer from "../Dashboard/components/AdminList";
 import CarouselRenderer from "../Dashboard/components/Carousel";
 import Courses from "../Dashboard/components/Courses";

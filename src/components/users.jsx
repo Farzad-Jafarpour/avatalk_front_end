@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Box } from "@mui/material";
 import userService from "../services/userService";
 import Copyright from "../common/copyright";
-import { Box } from "@mui/material";
 import MiniDrawer from "./drawer";
 import UserTable from "./userTable";
 const Users = () => {

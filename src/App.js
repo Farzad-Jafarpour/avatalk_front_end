@@ -8,8 +8,6 @@ import Users from "./components/users";
 import Login from "./components/login";
 import Logout from "./components/logout";
 import Home from "./components/home";
-import Classroom from "./components/classroom";
-import ClassesNew from "./components/classesNew";
 import AddUser from "./components/addUser";
 import HomePage from "components/homePage/homePage";
 import AddCourse from "components/homePage/components/AddCourse";
@@ -38,8 +36,6 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/adduser" element={<AddUser />} />
           <Route path="/users" element={<Users />} />
-          <Route path="/classroom" element={<Classroom />} />
-          <Route path="/classes" element={<ClassesNew />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/homepage" element={<HomePage />} />

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Box, Link, Grid, Button, Paper } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import { Box, Grid, Button } from "@mui/material";
+import { Add } from "@mui/icons-material";
 import ImgMediaCard from "components/homePage/components/card";
 import GridRenderer from "./GridRenderer";
-import { Add } from "@mui/icons-material";
 import http from "services/httpService";
+import "animate.css";
 
 const styles = {
   btn: {
@@ -18,6 +18,8 @@ const styles = {
       color: "#adc3f7",
       backgroundColor: "#fc5d5d",
       borderRadius: " 10px 0px 10px 0px ",
+      transform: "scale(1.2)",
+      opacity: 0.5,
     },
   },
 };
@@ -42,12 +44,21 @@ const Courses = () => {
     >
       <Box sx={{ display: "flex" }}>
         <Box>
-          <Button variant="contained" sx={styles.btn}>
+          <Button
+            className="animate__animated animate__lightSpeedInLeft animate__delay-1s"
+            variant="contained"
+            sx={styles.btn}
+          >
             Courses
           </Button>
         </Box>
         <Box>
-          <Button href="/addcourse" variant="contained" sx={styles.btn}>
+          <Button
+            className="animate__animated animate__lightSpeedInRight animate__delay-1s"
+            href="/addcourse"
+            variant="contained"
+            sx={styles.btn}
+          >
             <Add label="Chip 1" color="#000" />
           </Button>
         </Box>
@@ -65,6 +76,7 @@ const Courses = () => {
           {cards.map((card) =>
             GridRenderer(
               <ImgMediaCard
+                className="animate__animated animate__backInDown animate__delay-1s"
                 key={card.name}
                 id={card._id}
                 cardName={card.name}

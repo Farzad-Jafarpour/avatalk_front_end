@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios";
-import http from "services/httpService";
 import { useForm } from "react-hook-form";
 import { TextField, Button, Container, Paper, Grid, Box } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import FilesDragAndDrop from "common/FilesDragAndDrop";
+import http from "services/httpService";
 
 const AddCourse = () => {
   const [cardImage, setCardImage] = useState();

@@ -1,12 +1,11 @@
 import * as React from "react";
-import MiniDrawer from "../drawer";
-import { Box, Toolbar, Container, Grid, Paper } from "@mui/material";
+import { Box, Toolbar, Container, Grid } from "@mui/material";
 import Copyright from "../../common/copyright";
+import MiniDrawer from "../drawer";
 import Courses from "./components/Courses";
 import CarouselRenderer from "./components/Carousel";
 import AdminRenderer from "./components/AdminList";
 
-const drawerWidth = 240;
 function DashboardContent() {
   return (
     <>
