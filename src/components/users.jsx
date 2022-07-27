@@ -13,7 +13,7 @@ const Users = () => {
     if (users) {
       setUsers(users.data);
     }
-  }, [users]);
+  }, []);
 
   if (!users.length === 0) return null;
 
@@ -43,7 +43,7 @@ const Users = () => {
             mt: 12,
           }}
         >
-          <UserTable columns={columns} data={users} />
+          <UserTable columns={columns} users={users} />
         </Box>
       </Box>
       <Copyright sx={{ pt: 4 }} companyname="Company" />

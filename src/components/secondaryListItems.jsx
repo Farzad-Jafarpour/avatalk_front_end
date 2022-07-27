@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import {
   Link,
   ListItemButton,
@@ -37,7 +37,7 @@ const SecondaryListItems = ({ user }) => {
             <ListItemIcon>
               <Person />
             </ListItemIcon>
-            <ListItemText primary={`${user.name} ${user.lastName}`} />
+            <ListItemText primary={`${user.name}-${user.lastName}`} />
           </ListItemButton>
           <Link href="/logout">
             <ListItemButton>

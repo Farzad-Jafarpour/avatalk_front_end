@@ -18,7 +18,7 @@ const apiEndPoint = "http://localhost:3900/";
 
 const ImgMediaCard = ({ cardName, cardImage, cardDescription, id }) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+  const [btnHoverClass, setBtnHoverClass] = useState("");
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -55,15 +55,14 @@ const ImgMediaCard = ({ cardName, cardImage, cardDescription, id }) => {
             <Button
               onClick={handleModal}
               onMouseOver={() => {
-                setIsHovered(!isHovered);
+                setBtnHoverClass(
+                  "animate__animated animate__infinite animate__swing"
+                );
               }}
               onMouseOut={() => {
-                setIsHovered(!isHovered);
+                setBtnHoverClass("");
               }}
-              className={
-                isHovered &&
-                "animate__animated animate__infinite animate__swing"
-              }
+              className={btnHoverClass}
               size="small"
             >
               Details

@@ -1,12 +1,28 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Avatar, Button, Box, Grid, Container } from "@mui/material";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 import { Edit } from "@mui/icons-material";
 import Copyright from "../common/copyright";
 import RenderInput from "../common/input";
 import * as userService from "../services/userService";
 
 export default function EditUser({ data, closeModal, onEditNationalCode }) {
+  const [isAdmin, setIsAdmin] = useState(data.isAdmin);
+  const [isTeacher, setIsTeacher] = useState(data.isTeacher);
+  const [isStudent, setIsStudent] = useState(data.isStudent);
+
+  const handleAdminChange = (e) => {
+    setIsAdmin(e.target.checked);
+  };
+  const handleTeacherChange = (e) => {
+    setIsTeacher(e.target.checked);
+  };
+  const handleStudentChange = (e) => {
+    setIsStudent(e.target.checked);
+  };
+
   const { handleSubmit, control } = useForm();
   const defaultValues = { ...data };
   const onSubmit = async (data) => {
@@ -16,13 +32,15 @@ export default function EditUser({ data, closeModal, onEditNationalCode }) {
       modifiedData.lastName = data.lastName || defaultValues.lastName;
       modifiedData.nationalCode =
         data.nationalCode || defaultValues.nationalCode;
-      modifiedData.password = false || data.nationalCode;
+      modifiedData.password = false || data.password;
+      modifiedData.isAdmin = isAdmin;
+      modifiedData.isTeacher = isTeacher;
+      modifiedData.isStudent = isStudent;
 
       const response = await userService.editUser(
         modifiedData,
         onEditNationalCode
       );
-      window.location = "/users";
       closeModal();
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
@@ -32,8 +50,6 @@ export default function EditUser({ data, closeModal, onEditNationalCode }) {
       }
     }
   };
-
-  // if (error) return <Error error={error} />;
 
   return (
     <Grid container component="main" sx={{ height: "80vh" }}>
@@ -109,6 +125,43 @@ export default function EditUser({ data, closeModal, onEditNationalCode }) {
                   type="password"
                   control={control}
                 />
+                <Grid item xs={12}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={isAdmin}
+                          onChange={handleAdminChange}
+                        />
+                      }
+                      label="Admin"
+                    />
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={isTeacher}
+                          onChange={handleTeacherChange}
+                        />
+                      }
+                      label="Teacher"
+                    />
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={isStudent}
+                          onChange={handleStudentChange}
+                        />
+                      }
+                      label="Student"
+                    />
+                  </Box>
+                </Grid>
               </Grid>
             </Box>
           </Box>

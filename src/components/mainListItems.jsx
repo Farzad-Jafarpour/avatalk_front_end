@@ -5,7 +5,8 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import HomeWorkRoundedIcon from "@mui/icons-material/HomeWorkRounded";
+import OtherHousesIcon from '@mui/icons-material/OtherHouses';
+import AddToQueueIcon from '@mui/icons-material/AddToQueue';
 
 import { Home, NaturePeopleTwoTone } from "@mui/icons-material";
 
@@ -31,7 +32,15 @@ const MainListItems = () => {
       <Link href="/homepage" underline="hover" color="#212529">
         <ListItemButton>
           <ListItemIcon>
-            <HomeWorkRoundedIcon />
+            <OtherHousesIcon />
+          </ListItemIcon>
+          <ListItemText primary="Client Home Page" />
+        </ListItemButton>
+      </Link>
+      <Link href="/addcourse" underline="hover" color="#212529">
+        <ListItemButton>
+          <ListItemIcon>
+            <AddToQueueIcon />
           </ListItemIcon>
           <ListItemText primary="Client Home Page" />
         </ListItemButton>

@@ -1,4 +1,4 @@
-import React, { useState, forwardRef } from "react";
+import React, { useState, useEffect, forwardRef } from "react";
 import MaterialTable, { MTableToolbar } from "material-table";
 import {
   Link,
@@ -31,10 +31,11 @@ import {
 import userService from "../services/userService";
 import EditUser from "./editUser";
 
-const UserTable = ({ columns, data }) => {
+const UserTable = ({ columns, users }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editData, setEditData] = useState({});
   const [onEditNationalCode, setOnEditNationalCode] = useState({});
+
   const tableIcons = {
     Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
     Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
@@ -65,6 +66,7 @@ const UserTable = ({ columns, data }) => {
   const handleDelete = async (message, data) => {
     const deletedUser = await userService.deleteUser(data.nationalCode);
     console.log(`the ${data.name} ${data.lastName} ${message}`, deletedUser);
+    window.location.reload();
   };
 
   const handleEdit = (message, data) => {
@@ -78,6 +80,7 @@ const UserTable = ({ columns, data }) => {
 
   const handleCloseModal = () => {
     setModalOpen(false);
+    window.location.reload();
   };
 
   return (
@@ -100,10 +103,9 @@ const UserTable = ({ columns, data }) => {
           ]}
           options={{
             exportButton: true,
-            filtering: true,
           }}
           columns={columns}
-          data={data}
+          data={users}
           components={{
             Toolbar: (props) => (
               <div>

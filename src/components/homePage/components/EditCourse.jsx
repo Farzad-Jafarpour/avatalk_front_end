@@ -19,6 +19,7 @@ const EditCourse = () => {
     );
     setOldCardData(response.data);
   };
+
   getOldData();
 
   const handleUploadUserImage = async (image) => {
@@ -38,15 +39,23 @@ const EditCourse = () => {
   };
 
   const onSubmit = async (data) => {
-    console.log(data.cardName, cardImage);
+    console.log(oldCardData);
     let card = {
       cardImage: cardImage || oldCardData.cardImage,
       name: data.cardName || oldCardData.name,
       description: data.cardDescription || oldCardData.description,
     };
-
+    console.log(params.id);
     await http.put("http://localhost:3900/api/cards/" + params.id, card);
-    window.location = "/homepage";
+    if (cardImage) {
+      console.log("cardImage", cardImage);
+
+      await http.delete(
+        "http://localhost:3900/api/cards/" + oldCardData.cardImage
+      );
+      console.log("eshayin sike");
+    }
+    window.location = "/";
   };
   return (
     <>

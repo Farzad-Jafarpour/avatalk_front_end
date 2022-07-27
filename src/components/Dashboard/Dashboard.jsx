@@ -34,7 +34,7 @@ function DashboardContent() {
               }}
             >
               <MiniDrawer />
-              <Grid container sx={{ ml: 10 }} justifyContent="center">
+              <Grid container justifyContent="center">
                 <Grid item xs={12} md={9}>
                   <Courses />
                 </Grid>

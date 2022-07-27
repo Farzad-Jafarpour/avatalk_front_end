@@ -4,7 +4,7 @@ import GridRenderer from "./GridRenderer";
 import UserCard from "components/UserLists/components/userCard";
 import userService from "services/userService";
 
-const AdminRenderer = () => {
+const AdminRenderer = ({ cardClassName }) => {
   const [users, setUsers] = useState([]);
 
   useEffect(async () => {

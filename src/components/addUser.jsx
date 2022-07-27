@@ -1,18 +1,37 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Avatar, Button, Grid, Box, Container } from "@mui/material";
-import { AddBox, LockOutlined } from "@mui/icons-material";
+import { AddBox } from "@mui/icons-material";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 import Copyright from "../common/copyright";
 import RenderInput from "../common/input";
 import * as userService from "../services/userService";
 
 export default function AddUser() {
-  // const [error, setError] = useState({});
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isTeacher, setIsTeacher] = useState(false);
+  const [isStudent, setIsStudent] = useState(false);
+
+  const handleAdminChange = (e) => {
+    setIsAdmin(e.target.checked);
+  };
+  const handleTeacherChange = (e) => {
+    setIsTeacher(e.target.checked);
+  };
+  const handleStudentChange = (e) => {
+    setIsStudent(e.target.checked);
+  };
   const { handleSubmit, control } = useForm();
 
   const onSubmit = async (data) => {
+    console.log(data);
     try {
-      const response = await userService.register(data);
+      let user = data;
+      user.isAdmin = isAdmin;
+      user.isStudent = isStudent;
+      user.isTeacher = isTeacher;
+      const response = await userService.register(user);
       console.log(response);
       window.location = "/users";
     } catch (ex) {
@@ -74,7 +93,7 @@ export default function AddUser() {
                   <Grid item xs={6}>
                     <RenderInput
                       rules={{ required: "First name is required" }}
-                      validate
+                      validate="true"
                       required
                       sm={6}
                       name="name"
@@ -85,7 +104,7 @@ export default function AddUser() {
                   <Grid item xs={6}>
                     <RenderInput
                       rules={{ required: "Last name is required" }}
-                      validate
+                      validate="true"
                       required
                       sm={6}
                       name="lastName"
@@ -100,7 +119,7 @@ export default function AddUser() {
                   rules={{
                     required: "National code is required",
                   }}
-                  validate
+                  validate="true"
                   required
                   sx={{ width: 400, maxWidth: "100%" }}
                   name="nationalCode"
@@ -109,7 +128,7 @@ export default function AddUser() {
                 />
                 <RenderInput
                   rules={{ required: "Password is required" }}
-                  validate
+                  validate="true"
                   sx={{ width: 400, maxWidth: "100%" }}
                   name="password"
                   required
@@ -117,6 +136,47 @@ export default function AddUser() {
                   type="password"
                   control={control}
                 />
+
+                <Grid item xs={12}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={isAdmin}
+                          onChange={handleAdminChange}
+                        />
+                      }
+                      label="Admin"
+                    />
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={isTeacher}
+                          onChange={handleTeacherChange}
+                        />
+                      }
+                      label="Teacher"
+                    />
+
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={isStudent}
+                          control={control}
+                          onChange={handleStudentChange}
+                          label="student"
+                        />
+                      }
+                      label="Student"
+                    />
+                  </Box>
+                </Grid>
               </Grid>
             </Box>
           </Box>
