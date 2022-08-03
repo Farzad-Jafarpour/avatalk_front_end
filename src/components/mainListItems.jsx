@@ -5,9 +5,9 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import OtherHousesIcon from '@mui/icons-material/OtherHouses';
-import AddToQueueIcon from '@mui/icons-material/AddToQueue';
-
+import OtherHousesIcon from "@mui/icons-material/OtherHouses";
+import AddToQueueIcon from "@mui/icons-material/AddToQueue";
+import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import { Home, NaturePeopleTwoTone } from "@mui/icons-material";
 
 const MainListItems = () => {
@@ -43,6 +43,14 @@ const MainListItems = () => {
             <AddToQueueIcon />
           </ListItemIcon>
           <ListItemText primary="Client Home Page" />
+        </ListItemButton>
+      </Link>
+      <Link href="/addphoto" underline="hover" color="#212529">
+        <ListItemButton>
+          <ListItemIcon>
+            <AddAPhotoIcon />
+          </ListItemIcon>
+          <ListItemText primary="Add photo to Carousel" />
         </ListItemButton>
       </Link>
     </React.Fragment>

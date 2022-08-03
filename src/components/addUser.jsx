@@ -22,7 +22,11 @@ export default function AddUser() {
   const handleStudentChange = (e) => {
     setIsStudent(e.target.checked);
   };
-  const { handleSubmit, control } = useForm();
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -93,7 +97,6 @@ export default function AddUser() {
                   <Grid item xs={6}>
                     <RenderInput
                       rules={{ required: "First name is required" }}
-                      validate="true"
                       required
                       sm={6}
                       name="name"
@@ -104,12 +107,12 @@ export default function AddUser() {
                   <Grid item xs={6}>
                     <RenderInput
                       rules={{ required: "Last name is required" }}
-                      validate="true"
                       required
                       sm={6}
                       name="lastName"
                       label="Last Name"
                       control={control}
+                      errors={errors}
                     />
                   </Grid>
                 </Grid>
@@ -119,12 +122,12 @@ export default function AddUser() {
                   rules={{
                     required: "National code is required",
                   }}
-                  validate="true"
                   required
                   sx={{ width: 400, maxWidth: "100%" }}
                   name="nationalCode"
                   label="National Code"
                   control={control}
+                  errors={errors}
                 />
                 <RenderInput
                   rules={{ required: "Password is required" }}
@@ -135,6 +138,7 @@ export default function AddUser() {
                   label="Password"
                   type="password"
                   control={control}
+                  errors={errors}
                 />
 
                 <Grid item xs={12}>
@@ -200,7 +204,6 @@ export default function AddUser() {
               <Grid item xs={8}>
                 <Button
                   sx={{ width: 500, maxWidth: "100%" }}
-                  type="submit"
                   variant="contained"
                   href="/users"
                 >

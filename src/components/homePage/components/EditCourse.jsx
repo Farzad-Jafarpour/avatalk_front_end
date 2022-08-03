@@ -55,7 +55,7 @@ const EditCourse = () => {
       );
       console.log("eshayin sike");
     }
-    window.location = "/";
+    window.location = "/homepage";
   };
   return (
     <>

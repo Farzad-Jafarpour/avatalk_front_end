@@ -4,6 +4,7 @@ import AdminRenderer from "../Dashboard/components/AdminList";
 import CarouselRenderer from "../Dashboard/components/Carousel";
 import Courses from "../Dashboard/components/Courses";
 import Appbar from "components/homePage/components/Appbar";
+import Copyright from "common/copyright";
 
 const HomePage = () => {
   return (
@@ -31,6 +32,7 @@ const HomePage = () => {
             </Grid>
           </Grid>
         </Grid>
+        <Copyright sx={{ m: 1 }} companyname="Company" />
       </Paper>
     </>
   );

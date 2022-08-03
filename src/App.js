@@ -9,6 +9,7 @@ import Login from "./components/login";
 import Logout from "./components/logout";
 import Home from "./components/home";
 import AddUser from "./components/addUser";
+import AddPhoto from "components/Carousel/addPhoto";
 import HomePage from "components/homePage/homePage";
 import AddCourse from "components/homePage/components/AddCourse";
 import EditCourse from "components/homePage/components/EditCourse";
@@ -35,6 +36,7 @@ const App = () => {
         <Routes className="content">
           <Route path="/signup" element={<SignUp />} />
           <Route path="/adduser" element={<AddUser />} />
+          <Route path="/addphoto" element={<AddPhoto />} />
           <Route path="/users" element={<Users />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
